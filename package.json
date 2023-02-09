@@ -38,15 +38,5 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/emanwael/front.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/emanwael/front/issues"
-  },
-  "homepage": "https://github.com/emanwael/front#readme"
+  "main": "index.js"
 }

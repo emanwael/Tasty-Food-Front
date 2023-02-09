@@ -1,12 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+// import Profile from "./pages/admin/profile/profile";
 
 function App() {
-  return (
-    <React.StrictMode>
-      
-    </React.StrictMode>
-  );
+  return <div>hgfgfgfghf</div>;
 }
 
 export default App;
