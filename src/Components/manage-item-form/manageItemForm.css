@@ -84,8 +84,8 @@
 .form-row .statusToggle {
   cursor: pointer;
   text-indent: -9999px;
-  width: 4%;
-  height: 30px;
+  width: 50px;
+  height: 25px;
   background: grey;
   display: inline-block;
   border-radius: 100px;
@@ -97,8 +97,8 @@
   position: absolute;
   top: 5px;
   left: 5px;
-  width: 40%;
-  height: 70%;
+  width: 17px;
+  height: 17px;
   background: #fff;
   border-radius: 90px;
   transition: 0.3s;

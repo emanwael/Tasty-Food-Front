@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
 import "./manageItemForm.css";
 
-function ManageItemForm({ mode, item }) {
+import React, { useState, useEffect } from "react";
+import { addMenuItem, editMenuItem } from "../../store/slices/menuItemSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+function ManageItemForm({ mode, item, restaurant }) {
   // set form values based on mode
   useEffect(() => {
     if (mode === "edit") {
@@ -18,7 +21,35 @@ function ManageItemForm({ mode, item }) {
     }
   }, []);
 
-  //form upate & validation
+  // api connection setup
+  const dispatch = useDispatch();
+  const addItemOfForm = () => {
+    let newItem = {
+      meal_name: formState.itemName,
+      description: formState.itemDescription,
+      price: formState.itemPrice,
+      meal_img: formState.itemImage,
+      food_group: formState.itemGroup,
+      is_available: formState.itemStatus,
+      restaurant,
+    };
+    dispatch(addMenuItem(newItem));
+  };
+  const editItemOfForm = () => {
+    let newItem = {
+      _id: item._id,
+      meal_name: formState.itemName,
+      description: formState.itemDescription,
+      price: formState.itemPrice,
+      meal_img: formState.itemImage,
+      food_group: formState.itemGroup,
+      is_available: formState.itemStatus,
+      restaurant,
+    };
+    dispatch(editMenuItem(newItem));
+  };
+
+  // form upate & validation
   let [formTouches, setFormTouches] = useState({
     itemName: false,
     itemPrice: false,
@@ -38,7 +69,7 @@ function ManageItemForm({ mode, item }) {
     valid: false,
   });
 
-  //update item availablity
+  // update item availablity
   const updateItemStatus = (e) => {
     setFormState({
       ...formState,
@@ -64,18 +95,15 @@ function ManageItemForm({ mode, item }) {
       setFormState({ ...formState, valid: true });
       setFormTouches({ ...formTouches, formSubmitted: true });
 
-      ////////////////////////////////TODO
-      //TODO send data to api
-      console.log(formState);
+      if (mode === "add") addItemOfForm();
+      else if (mode === "edit") editItemOfForm();
     } else {
       setFormState({ ...formState, valid: false });
       setFormTouches({ ...formTouches, formSubmitted: true });
-      console.log("errrrrrrrrrr");
     }
-    ////////////////////////////////////TODO
   };
 
-  //image select & preview
+  // image select & preview
   let [imagePreview, setImagePreview] = useState(
     "https://blog.nscsports.org/wp-content/uploads/2014/10/default-img.gif"
   );
@@ -90,8 +118,8 @@ function ManageItemForm({ mode, item }) {
   return (
     <div className="add-item-component">
       <div className="add-item-form">
-        {mode == "add" && <h3>ADD ITEM FORM</h3>}
-        {mode == "edit" && <h3>Edit ITEM FORM</h3>}
+        {mode === "add" && <h3>ADD ITEM FORM</h3>}
+        {mode === "edit" && <h3>EDIT ITEM FORM</h3>}
         <form>
           <div className="form-row">
             <label className="row-label">Item Name</label>
@@ -175,7 +203,7 @@ function ManageItemForm({ mode, item }) {
       <div className="item-view">
         <h3>ITEM</h3>
         <div className="image-preview">
-          <img src={imagePreview} name="ItemImagePreview" />
+          <img src={imagePreview} name="ItemImagePreview" alt="" />
         </div>
         <div className="form-row">
           <label className="status-label">Status Available</label>
@@ -192,12 +220,12 @@ function ManageItemForm({ mode, item }) {
           </label>
         </div>
         <div className="">
-          {mode == "add" && (
+          {mode === "add" && (
             <button className="add-item-button" onClick={validateFormData}>
               Add Menu Item
             </button>
           )}
-          {mode == "edit" && (
+          {mode === "edit" && (
             <button className="add-item-button" onClick={validateFormData}>
               Update Menu Item
             </button>
@@ -217,23 +245,26 @@ export default ManageItemForm;
 //////!!! how to run
 //////!!! run in edit mode/////
 {
-  /* <ManageItemForm
-      mode="edit"
-      item={{
-        itemName: "old name",
-        itemDescription: "old desctiption",
-        itemGroup: "old Group",
-        itemPrice: 50,
-        itemImage:
-          "http://metropolitanhost.com/themes/themeforest/react/costic/assets/img/costic/add-product-1.jpg",
-        itemStatus: true,
-      }}
-    ></ManageItemForm> */
+  //   <ManageItemForm
+  //   mode="edit"
+  //   item={{
+  //     _id: "item_id as a string",
+  //     itemName: "old name",
+  //     itemDescription: "old desctiption",
+  //     itemGroup: "old Group",
+  //     itemPrice: 50,
+  //     itemImage:
+  //       "http://metropolitanhost.com/themes/themeforest/react/costic/assets/img/costic/add-product-1.jpg",
+  //     itemStatus: true,
+  //   }}
+  //   restaurant={"restaurant_id as a string"}
+  // ></ManageItemForm>
 }
 //////!!! run in add mode/////
 {
   /* <ManageItemForm
       mode="add"
+      restaurant={"restaurant_id as a string"}
     ></ManageItemForm> */
 }
 /////////////////////////////////////
