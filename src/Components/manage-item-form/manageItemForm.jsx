@@ -244,27 +244,27 @@ export default ManageItemForm;
 ///////////////////////////////////
 //////!!! how to run
 //////!!! run in edit mode/////
-{
-  //   <ManageItemForm
-  //   mode="edit"
-  //   item={{
-  //     _id: "item_id as a string",
-  //     itemName: "old name",
-  //     itemDescription: "old desctiption",
-  //     itemGroup: "old Group",
-  //     itemPrice: 50,
-  //     itemImage:
-  //       "http://metropolitanhost.com/themes/themeforest/react/costic/assets/img/costic/add-product-1.jpg",
-  //     itemStatus: true,
-  //   }}
-  //   restaurant={"restaurant_id as a string"}
-  // ></ManageItemForm>
-}
-//////!!! run in add mode/////
-{
-  /* <ManageItemForm
-      mode="add"
-      restaurant={"restaurant_id as a string"}
-    ></ManageItemForm> */
-}
-/////////////////////////////////////
+// {
+//   //   <ManageItemForm
+//   //   mode="edit"
+//   //   item={{
+//   //     _id: "item_id as a string",
+//   //     itemName: "old name",
+//   //     itemDescription: "old desctiption",
+//   //     itemGroup: "old Group",
+//   //     itemPrice: 50,
+//   //     itemImage:
+//   //       "http://metropolitanhost.com/themes/themeforest/react/costic/assets/img/costic/add-product-1.jpg",
+//   //     itemStatus: true,
+//   //   }}
+//   //   restaurant={"restaurant_id as a string"}
+//   // ></ManageItemForm>
+// }
+// //////!!! run in add mode/////
+// {
+//   /* <ManageItemForm
+//       mode="add"
+//       restaurant={"restaurant_id as a string"}
+//     ></ManageItemForm> */
+// }
+// /////////////////////////////////////
