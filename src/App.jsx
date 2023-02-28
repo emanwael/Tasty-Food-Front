@@ -1,8 +1,9 @@
-import { Route ,Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import ManageItemForm from "./Components/manage-item-form/manageItemForm";
+import ManageItemForm from "./pages/manage-item-form/manageItemForm";
 import Login from "./pages/Form-user/login";
 import Register from "./pages/Form-user/register";
+import Adminmenu from "./pages/Adminmenu/AdminMenu";
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/add" element={<ManageItemForm />} />
         <Route path="/edit" element={<ManageItemForm />} />
+        <Route path="adminMenue/:id" element={<Adminmenu />} />
+
       </Routes>
     </div>
   );
