@@ -27,11 +27,13 @@ const HomeRestaurant = () => {
   return (
     <div>
       <MyNavbar />
-      <Banner handleScrollMenu={handleScrollMenu} />
-      <Menu list={myMenu} ref={menuRef} />
-      <ButtonCartCount />
-      {myMenu.length > 0 && console.log(myMenu)}
-      {/* {restaurantInfo != {} && console.log(restaurantInfo)} */}
+      <div className=" containerr">
+        <Banner handleScrollMenu={handleScrollMenu} />
+        <Menu list={myMenu} ref={menuRef} />
+        <ButtonCartCount />
+        {myMenu.length > 0 && console.log(myMenu)}
+        {/* {restaurantInfo != {} && console.log(restaurantInfo)} */}
+      </div>
     </div>
   );
 };

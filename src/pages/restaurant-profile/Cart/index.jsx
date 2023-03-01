@@ -14,21 +14,22 @@ const Cart = () => {
   return (
     <>
       <MyNavbar />
-
-      {cartItems.length === 0 ? (
-        <EmptyCart />
-      ) : (
-        <div className="orders">
-          <h1 className="orders-heading">Your Orders</h1>
-          <div className="orders-menu">
-            <Menu list={cartItems} />
+      <div className=" containerr">
+        {cartItems.length === 0 ? (
+          <EmptyCart />
+        ) : (
+          <div className="orders">
+            <h1 className="orders-heading">Your Orders</h1>
+            <div className="orders-menu">
+              <Menu list={cartItems} />
+            </div>
+            <h3 className="orders-total">Your Total ${totalPrice}</h3>
+            <button onClick={() => navigate("/payment")}>
+              Pay Now<i className="fas fa-long-arrow-alt-right"></i>
+            </button>
           </div>
-          <h3 className="orders-total">Your Total ${totalPrice}</h3>
-          <button onClick={() => navigate("/payment")}>
-            Pay Now<i className="fas fa-long-arrow-alt-right"></i>
-          </button>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };

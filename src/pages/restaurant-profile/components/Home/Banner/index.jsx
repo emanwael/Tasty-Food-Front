@@ -8,7 +8,7 @@ const Banner = ({ handleScrollMenu }) => {
   const { restaurantInfo } = useSelector((state) => state.mealSlice);
   const { logo, restaurant_name } = restaurantInfo;
   return (
-    <header>
+    <header className=" headerr">
       <div className="header-content">
         {/* <Logo /> */}
         <div className="content-main">
