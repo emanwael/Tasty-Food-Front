@@ -8,32 +8,8 @@ let initialState = {
   isLoading: false,
 };
 
-export const getAllCustomers = createAsyncThunk(
-  "Customer/getAllCustomers",
-  async (args, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const response = await axios.get(baseURL);
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-export const getCustomerById = createAsyncThunk(
-  "Customer/getCustomerById",
-  async (id, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const response = await axios.get(`${baseURL}/${id}`);
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
 export const signCustomerIn = createAsyncThunk(
-  "Customer/getCustomerById",
+  "Customer/signCustomerIn",
   async (customer, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
@@ -80,39 +56,24 @@ export const removeCustomer = createAsyncThunk(
     }
   }
 );
+export const makeOrder = createAsyncThunk(
+  "Customers/makeOrder",
+  async (order, thunkAPI) => {
+    // send request for order route
+  }
+);
+
 const CustomersSlice = createSlice({
   name: "Customers",
   initialState,
   reducers: {},
   extraReducers: {
-    [getAllCustomers.pending]: (state, action) => {
-      state.isLoading = true;
-    },
-    [getAllCustomers.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.CustomersList = action.payload;
-    },
-    [getAllCustomers.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.errors = action.payload;
-    },
-    [getCustomerById.pending]: (state, action) => {
-      state.isLoading = true;
-    },
-    [getCustomerById.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.CustomersList = action.payload;
-    },
-    [getCustomerById.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.errors = action.payload;
-    },
     [signCustomerIn.pending]: (state, action) => {
       state.isLoading = true;
     },
     [signCustomerIn.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.CustomersList = action.payload;
+      state.customerData = action.payload;
     },
     [signCustomerIn.rejected]: (state, action) => {
       state.isLoading = false;
@@ -123,7 +84,7 @@ const CustomersSlice = createSlice({
     },
     [addCustomer.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.CustomersList = action.payload;
+      state.customerData = action.payload;
     },
     [addCustomer.rejected]: (state, action) => {
       state.isLoading = false;
@@ -134,7 +95,7 @@ const CustomersSlice = createSlice({
     },
     [editCustomer.fulfilled]: (state, action) => {
       state.isLoading = false;
-      //   state.CustomersList = action.payload;
+      state.customerData = action.payload;
     },
     [editCustomer.rejected]: (state, action) => {
       state.isLoading = false;
@@ -145,7 +106,7 @@ const CustomersSlice = createSlice({
     },
     [removeCustomer.fulfilled]: (state, action) => {
       state.isLoading = false;
-      //   state.CustomersList = action.payload;
+      state.customerData = {};
     },
     [removeCustomer.rejected]: (state, action) => {
       state.isLoading = false;
