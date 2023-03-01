@@ -79,7 +79,7 @@ export default function Favrestaurants() {
             </div>
           </div>
         </div>
-        <button>ADD New</button>
+        <button className="button">ADD New</button>
       </div>
 
       <div className="container favourite">
@@ -160,7 +160,7 @@ export default function Favrestaurants() {
             </div>
           </div>
         </div>
-        <button>ADD New</button>
+        <button className="button">ADD New</button>
       </div>
     </>
   );

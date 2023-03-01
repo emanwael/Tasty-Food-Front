@@ -95,7 +95,7 @@
   text-transform: capitalize;
 }
 
-button {
+.button {
   background-color: hwb(29 3% 10% / 0.587);
   border-color: #fff;
   display: block;
