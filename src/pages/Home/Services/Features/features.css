@@ -1,0 +1,21 @@
+.order_section {
+  background-color: beige;
+  margin: 50px 20px;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.card-item:hover {
+  background-color: #e2460eb7;
+  color: #fff;
+  border-radius: 30px 0;
+  padding: 30px;
+  box-shadow: 5px 5px 15px -5px #333;
+  transition: 0.3s;
+  transform: scale(1.1);
+}
+
+.card-item:hover p {
+  color: #fff;
+  font-weight: bold;
+}
