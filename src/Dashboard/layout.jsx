@@ -1,6 +1,6 @@
 import React from "react";
 import Sidbar from "./Sidebar/sidbar";
-import Dashboard from "./Admin Dashboard/dashboard";
+import Dashboard from "./Admin-Dashboard/dashboard";
 import TopNav from "./Nav/topNav";
 
 export default function Layout() {

@@ -15,6 +15,7 @@ import AdminRegister from "./pages/restaurant-form/register";
 import ManageItemForm from "./pages/manage-item-form/manageItemForm";
 import Layout from "./Dashboard/layout";
 import Adminmenu from "./pages/Adminmenu/AdminMenu";
+import Profile from "./pages/Profile-user/profile";
 
 function App() {
   const stripePromise = loadStripe(
@@ -39,6 +40,8 @@ function App() {
           <Route path="/restaurant/:id" element={<HomeRestaurant />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/user" element={<Profile />} />
+
           <Route path="/admin" element={<Layout />} />
         </Routes>
       </Elements>

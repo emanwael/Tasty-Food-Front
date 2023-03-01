@@ -1,0 +1,67 @@
+.userProfile {
+  background: hwb(29 37% 8% / 0.37);
+  border-radius: 2rem;
+  height: auto;
+  padding-bottom: 10px;
+}
+h3 {
+  padding: 30px;
+  text-decoration: underline;
+}
+
+.avatar-profile {
+  height: 150px;
+  width: 150px;
+}
+
+.avatar {
+  height: 150px;
+  width: 150px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: flex;
+  justify-content: flex-start;
+}
+
+h4 {
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+.data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+}
+
+span {
+  color: hwb(29 3% 10% / 0.587);
+}
+
+.btn button {
+  background-color: hwb(29 3% 10% / 0.587);
+  border-color: #fff;
+  display: block;
+  margin: 25px auto;
+  padding: 15px;
+  border-radius: 10px;
+  width: 200px;
+}
+
+@media (max-width: 490px) {
+  .data {
+    flex-direction: column;
+  }
+}

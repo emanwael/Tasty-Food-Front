@@ -37,7 +37,7 @@ export default function MyNavbar() {
       <Container>
         <div className="nav__wrapper d-flex align-items-center justify-content-between">
           <div className="logo">
-            <img src="./images/logo.png" alt="logo" />
+            <img src="../images/logo.png" alt="logo" />
             <h5>TASTY FOOD</h5>
           </div>
 
