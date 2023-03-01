@@ -13,8 +13,8 @@ import CustomerRegister from "./pages/user-form/register";
 import AdminLogin from "./pages/restaurant-form/login";
 import AdminRegister from "./pages/restaurant-form/register";
 import ManageItemForm from "./pages/manage-item-form/manageItemForm";
-import Adminmenu from "./pages/Adminmenu/AdminMenu";
 import Layout from "./Dashboard/layout";
+import Adminmenu from "./pages/Adminmenu/AdminMenu";
 
 function App() {
   const stripePromise = loadStripe(
@@ -22,27 +22,26 @@ function App() {
   );
   return (
     <div>
-      <Layout></Layout>
+      {/* <Layout></Layout> */}
 
-      {/* <Elements stripe={stripePromise}>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/customer-login" element={<CustomerLogin />} />
-        <Route path="/customer-register" element={<CustomerRegister />} />
-        <Route path="/admin-login" element={<AdminLogin />} />
-        <Route path="/admin-register" element={<AdminRegister />} />
-        <Route path="/add" element={<ManageItemForm mode="add" />} />
-        <Route path="/edit" element={<ManageItemForm mode="edit" />} />
-        <Route path="adminMenue/:id" element={<Adminmenu />} />
+      <Elements stripe={stripePromise}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/customer-login" element={<CustomerLogin />} />
+          <Route path="/customer-register" element={<CustomerRegister />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-register" element={<AdminRegister />} />
+          <Route path="/add" element={<ManageItemForm mode="add" />} />
+          <Route path="/edit" element={<ManageItemForm mode="edit" />} />
+          <Route path="adminMenue/:id" element={<Adminmenu />} />
 
-        <Route path="/restaurant/:id" element={<HomeRestaurant />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/payment" element={<Payment />} />
-      </Routes>
-       
-      
-    </Elements> */}
+          <Route path="/restaurant/:id" element={<HomeRestaurant />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/admin" element={<Layout />} />
+        </Routes>
+      </Elements>
     </div>
   );
 }

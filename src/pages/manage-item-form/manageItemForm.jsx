@@ -3,6 +3,7 @@ import "./manageItemForm.css";
 import React, { useState, useEffect } from "react";
 import { addMenuItem, editMenuItem } from "../../store/slices/menuItemSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Sidbar from "../../Dashboard/Sidebar/sidbar";
 
 function ManageItemForm({ mode, item, restaurant }) {
   // set form values based on mode
@@ -116,78 +117,83 @@ function ManageItemForm({ mode, item, restaurant }) {
   };
 
   return (
-    <div className="add-item-component">
-      <div className="add-item-form">
-        {mode === "add" && <h3>ADD ITEM FORM</h3>}
-        {mode === "edit" && <h3>EDIT ITEM FORM</h3>}
-        <form>
-          <div className="form-row">
-            <label className="row-label">Item Name</label>
-            <input
-              type="text"
-              name="itemName"
-              placeholder="Item Name"
-              value={formState.itemName}
-              onInput={updateFormState}
-            ></input>
-            {formTouches.itemName && !formState.itemName && (
-              <p className="error-msg"> name can't be empty</p>
-            )}
-          </div>
-          <div className="form-row">
-            <label className="row-label">Price</label>
-            <input
-              type="text"
-              name="itemPrice"
-              placeholder="Item Price"
-              value={formState.itemPrice}
-              onInput={updateFormState}
-            ></input>
-            {formTouches.itemPrice &&
-              !String(formState.itemPrice).match(/^[0-9]+$/) && (
-                <p className="error-msg">
-                  price can't be empty and must be numbers only
-                </p>
-              )}
-          </div>
-          <div className="form-row">
-            <label className="row-label">Group</label>
-            <input
-              list="itemGroup"
-              placeholder="Item Group"
-              name="itemGroup"
-              value={formState.itemGroup}
-              onInput={updateFormState}
-            ></input>
-            <datalist id="itemGroup">
-              <option value="burger" />
-              <option value="pizza" />
-              <option value="pasta" />
-            </datalist>
-            {formTouches.itemGroup && !formState.itemGroup && (
-              <p className="error-msg"> group can't be empty</p>
-            )}
-          </div>
-          <div className="form-row">
-            <label className="row-label">Description</label>
-            <textarea
-              name="itemDescription"
-              placeholder="Item Description"
-              value={formState.itemDescription}
-              onInput={updateFormState}
-            ></textarea>
-            {formTouches.itemDescription && !formState.itemDescription && (
-              <p className="error-msg"> description can't be empty</p>
-            )}
-          </div>
-          <div className="form-row">
-            <label className="row-label">Image</label>
-            <input
-              type="file"
-              name="itemImage"
-              onChange={preview_image}
-            ></input>
-            {/* <div className="file-upload-select">
+    <div className=" row">
+      <div className="col-sm-6 col-md-2">
+        <Sidbar />
+      </div>
+      <div className="col-sm-6 col-md-9">
+        <div className="add-item-component">
+          <div className="add-item-form">
+            {mode === "add" && <h3>ADD ITEM FORM</h3>}
+            {mode === "edit" && <h3>EDIT ITEM FORM</h3>}
+            <form>
+              <div className="form-row">
+                <label className="row-label">Item Name</label>
+                <input
+                  type="text"
+                  name="itemName"
+                  placeholder="Item Name"
+                  value={formState.itemName}
+                  onInput={updateFormState}
+                ></input>
+                {formTouches.itemName && !formState.itemName && (
+                  <p className="error-msg"> name can't be empty</p>
+                )}
+              </div>
+              <div className="form-row">
+                <label className="row-label">Price</label>
+                <input
+                  type="text"
+                  name="itemPrice"
+                  placeholder="Item Price"
+                  value={formState.itemPrice}
+                  onInput={updateFormState}
+                ></input>
+                {formTouches.itemPrice &&
+                  !String(formState.itemPrice).match(/^[0-9]+$/) && (
+                    <p className="error-msg">
+                      price can't be empty and must be numbers only
+                    </p>
+                  )}
+              </div>
+              <div className="form-row">
+                <label className="row-label">Group</label>
+                <input
+                  list="itemGroup"
+                  placeholder="Item Group"
+                  name="itemGroup"
+                  value={formState.itemGroup}
+                  onInput={updateFormState}
+                ></input>
+                <datalist id="itemGroup">
+                  <option value="burger" />
+                  <option value="pizza" />
+                  <option value="pasta" />
+                </datalist>
+                {formTouches.itemGroup && !formState.itemGroup && (
+                  <p className="error-msg"> group can't be empty</p>
+                )}
+              </div>
+              <div className="form-row">
+                <label className="row-label">Description</label>
+                <textarea
+                  name="itemDescription"
+                  placeholder="Item Description"
+                  value={formState.itemDescription}
+                  onInput={updateFormState}
+                ></textarea>
+                {formTouches.itemDescription && !formState.itemDescription && (
+                  <p className="error-msg"> description can't be empty</p>
+                )}
+              </div>
+              <div className="form-row">
+                <label className="row-label">Image</label>
+                <input
+                  type="file"
+                  name="itemImage"
+                  onChange={preview_image}
+                ></input>
+                {/* <div className="file-upload-select">
               <div className="file-select-button">Choose File</div>
               <div className="file-select-name">No file chosen </div>
               <input
@@ -197,42 +203,44 @@ function ManageItemForm({ mode, item, restaurant }) {
                 onChange={preview_image}
               />
             </div> */}
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-      <div className="item-view">
-        <h3>ITEM</h3>
-        <div className="image-preview">
-          <img src={imagePreview} name="ItemImagePreview" alt="" />
-        </div>
-        <div className="form-row">
-          <label className="status-label">Status Available</label>
-          <input
-            type="checkbox"
-            name="itemStatus"
-            id="statusSwitch"
-            className="statusSwitch"
-            checked={formState.itemStatus}
-            onChange={updateItemStatus}
-          />
-          <label htmlFor="statusSwitch" className="statusToggle">
-            Toggle
-          </label>
-        </div>
-        <div className="">
-          {mode === "add" && (
-            <button className="add-item-button" onClick={validateFormData}>
-              Add Menu Item
-            </button>
-          )}
-          {mode === "edit" && (
-            <button className="add-item-button" onClick={validateFormData}>
-              Update Menu Item
-            </button>
-          )}
-          {formTouches.formSubmitted && !formState.valid && (
-            <p className="error-msg"> please fill all the fields</p>
-          )}
+          <div className="item-view">
+            <h3>ITEM</h3>
+            <div className="image-preview">
+              <img src={imagePreview} name="ItemImagePreview" alt="" />
+            </div>
+            <div className="form-row">
+              <label className="status-label">Status Available</label>
+              <input
+                type="checkbox"
+                name="itemStatus"
+                id="statusSwitch"
+                className="statusSwitch"
+                checked={formState.itemStatus}
+                onChange={updateItemStatus}
+              />
+              <label htmlFor="statusSwitch" className="statusToggle">
+                Toggle
+              </label>
+            </div>
+            <div className="">
+              {mode === "add" && (
+                <button className="add-item-button" onClick={validateFormData}>
+                  Add Menu Item
+                </button>
+              )}
+              {mode === "edit" && (
+                <button className="add-item-button" onClick={validateFormData}>
+                  Update Menu Item
+                </button>
+              )}
+              {formTouches.formSubmitted && !formState.valid && (
+                <p className="error-msg"> please fill all the fields</p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
