@@ -6,6 +6,7 @@ import axios from "axios";
 const initialState = {
     myMenu: [],
     meals: [],
+    restaurantInfo: {},
     error: null,
     isLoading: false
 }
@@ -54,6 +55,8 @@ const mealSlice = createSlice({
             state.isLoading = false
             state.myMenu = action.payload.menu
             state.meals = action.payload.meals
+            state.restaurantInfo = action.payload
+
         },
         [getAllMeals.rejected]: (state, action) => {
             state.isLoading = false
