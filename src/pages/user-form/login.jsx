@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signCustomerIn } from "../../store/slices/customerSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "./user.css";
+import { useNavigate } from "react-router-dom";
 export default function CustomerLogin() {
+  const navigate = useNavigate();
+
   // form update & validation
   let [formTouches, setFormTouches] = useState({
     email: false,
@@ -15,7 +18,6 @@ export default function CustomerLogin() {
     password: "",
     valid: false,
   });
-
   const validateFormData = () => {
     if (
       formState.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) &&
@@ -24,10 +26,7 @@ export default function CustomerLogin() {
       setFormState({ ...formState, valid: true });
       setFormTouches({ ...formTouches, formSubmitted: true });
 
-      //////////TODO --> USER Login Function
       signInCustomerOfForm();
-
-      //TODO --> navigate to customers home page
     } else {
       setFormState({ ...formState, valid: false });
       setFormTouches({ ...formTouches, formSubmitted: true });
@@ -43,13 +42,17 @@ export default function CustomerLogin() {
   };
   // api connection setup
   const dispatch = useDispatch();
+  const { customerData } = useSelector((store) => store.customers);
   const signInCustomerOfForm = () => {
-    let customer = {
-      email: formState.email,
-      password: formState.password,
-    };
-    dispatch(signCustomerIn(customer));
+    dispatch(
+      signCustomerIn({ email: formState.email, password: formState.password })
+    );
   };
+  useEffect(() => {
+    if (customerData._id) {
+      navigate("/home");
+    }
+  }, [customerData]);
 
   return (
     <div>
@@ -58,7 +61,15 @@ export default function CustomerLogin() {
           <div className="left">
             <h2>Welcome</h2>
             <a>
-              <button className="btn text-white"> Sign Up</button>
+              <button
+                className="btn text-white"
+                onClick={() => {
+                  navigate(`/customer-register`);
+                }}
+              >
+                {" "}
+                Sign Up
+              </button>
             </a>
           </div>
 
@@ -105,9 +116,16 @@ export default function CustomerLogin() {
                 please fill all the fields
               </span>
             )}
+            {formTouches.formSubmitted &&
+              formState.valid &&
+              !customerData._id && (
+                <span className="error-message input d-block">
+                  Login Failed: Your email or password is incorrect
+                </span>
+              )}
             <p className="text-dark p-0">
               Have no account yet?&nbsp;
-              <a href="#" className="fw-bold">
+              <a href="/customer-register" className="fw-bold">
                 Sign Up
               </a>
             </p>

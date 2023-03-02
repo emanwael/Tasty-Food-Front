@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { addCustomer } from "../../store/slices/customerSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "./user.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+  const navigate = useNavigate();
+
   // form update & validation
   let [formTouches, setFormTouches] = useState({
     firstName: false,
@@ -36,8 +39,8 @@ export default function Register() {
     ) {
       setFormState({ ...formState, valid: true });
       setFormTouches({ ...formTouches, formSubmitted: true });
+
       addCustomerOfForm();
-      //TODO --> navigate to customers home page
     } else {
       setFormState({ ...formState, valid: false });
       setFormTouches({ ...formTouches, formSubmitted: true });
@@ -53,6 +56,7 @@ export default function Register() {
   };
   // api connection setup
   const dispatch = useDispatch();
+  const { customerData } = useSelector((store) => store.customers);
   const addCustomerOfForm = () => {
     let newCustomer = {
       customer_name: `${formState.firstName} ${formState.lastName}`,
@@ -63,7 +67,11 @@ export default function Register() {
     };
     dispatch(addCustomer(newCustomer));
   };
-
+  useEffect(() => {
+    if (customerData._id) {
+      navigate("/home");
+    }
+  }, [customerData]);
   return (
     <div>
       <div className="signup_container">
@@ -71,7 +79,13 @@ export default function Register() {
           <div className="left">
             <h2>Welcome</h2>
             <a>
-              <button type="button" className="btn text-white">
+              <button
+                type="button"
+                className="btn text-white"
+                onClick={() => {
+                  navigate("/customer-login");
+                }}
+              >
                 {" "}
                 Sign In
               </button>
@@ -175,9 +189,16 @@ export default function Register() {
                 Please Fill all the fields
               </span>
             )}
+            {formTouches.formSubmitted &&
+              formState.valid &&
+              !customerData._id && (
+                <span className="error-message input d-block">
+                  that email address is already in use
+                </span>
+              )}
             <p className="text-dark p-0">
               Already have an account?&nbsp;
-              <a href="#" className="fw-bold ">
+              <a href="/customer-login" className="fw-bold ">
                 Login
               </a>
             </p>
