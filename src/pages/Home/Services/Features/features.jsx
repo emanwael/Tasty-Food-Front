@@ -7,18 +7,18 @@ import "../../home.css";
 const orderSteps = [
   {
     title: "Choose Restaurant",
-    imgUrl: "../../images/service-01.png",
+    imgUrl: "../../images/restaurant.jpg",
     desc: "Browse the menu of the restaurant and order directly from our web app.",
   },
 
   {
     title: "Save your Time & Don't Wait",
-    imgUrl: "../../images/service-02.png",
+    imgUrl: "../../images/order.jpg",
     desc: "Your order will immediately collected and sent by our courier.",
   },
   {
     title: "Easy Pick Up",
-    imgUrl: "../../images/service-03.png",
+    imgUrl: "../../images/door.jpg",
     desc: "Pick Up delivery at your door , Be calm with our payment methods and enjoy delicious foods.",
   },
 ];
@@ -65,6 +65,7 @@ export default function Features() {
                   src={item.imgUrl}
                   alt="feature-img"
                   className="w-50 mb-3"
+                  style={{borderRadius:'50%'}}
                 />
                 <h5 className=" fw-bold mb-3">{item.title}</h5>
                 <p>{item.desc}</p>
@@ -72,7 +73,7 @@ export default function Features() {
             </Col>
           ))}
         </Row>
-
+            <hr></hr>
         {/* section2 */}
         <Row>
           <Col lg="12" className="text-center">

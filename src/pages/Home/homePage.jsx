@@ -7,6 +7,9 @@ import Features from './Services/Features/features';
 import About from './About/about';
 import Header from './Header/header';
 import MyNavbar from './Navbar/myNavbar';
+import AppInstall from './Services/Features/appInstall';
+import RestaurantCards from './Restaurant Cards/Cards/restaurantCards';
+import TopDishes from './Restaurant Cards/Top Dishes/topDishes';
 
 export default function HomePage() {
   return (
@@ -14,8 +17,11 @@ export default function HomePage() {
       <MyNavbar></MyNavbar>
       <Header></Header>
       <About></About>
+      <RestaurantCards></RestaurantCards>
+      <TopDishes></TopDishes>
       <Features></Features>
       <ChooseUs></ChooseUs>
+      <AppInstall></AppInstall>
       <Review></Review>
       <Footer></Footer>
     </div>

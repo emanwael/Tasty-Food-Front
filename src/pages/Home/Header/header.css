@@ -31,7 +31,7 @@
 }
 
 .order__btn:hover {
-  background: #333;
+  background-color: #333;
 }
 
 .all__foods-btn {
@@ -54,4 +54,14 @@
   color: #fff;
   border-radius: 50%;
   font-weight: 500;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: bold;
+}
+.link:hover {
+  color: #333;
+  transform: scale(1.1);
+  transition: 0.3s;
 }

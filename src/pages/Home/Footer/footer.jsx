@@ -25,12 +25,12 @@ export default function Footer() {
           <h5 className="footer__title">Delivery Time</h5>
           <ListGroup className="deliver__time-list">
             <ListGroupItem className=" delivery__time-item border-0 ps-0">
-              <span style={{fontWeight:'bold'}}>Sunday - Thursday</span>
+              <span style={{fontWeight:'bold' , color:'#333'}}>Sunday - Thursday</span>
               <p>10:00am - 11:00pm</p>
             </ListGroupItem>
 
             <ListGroupItem className=" delivery__time-item border-0 ps-0">
-              <span style={{fontWeight:'bold'}}>Friday - Saturday</span>
+              <span style={{fontWeight:'bold' , color:'#333'}}>Friday - Saturday</span>
               <p>Off day</p>
             </ListGroupItem>
           </ListGroup>
@@ -43,11 +43,11 @@ export default function Footer() {
               <p><strong>Location:</strong> ZindaBazar, Sylhet-3100, Bangladesh</p>
             </ListGroupItem>
             <ListGroupItem className=" delivery__time-item border-0 ps-0">
-              <span><strong>Phone:</strong> 01712345678</span>
+              <span style={{color:'#333'}}><strong>Phone:</strong> 01712345678</span>
             </ListGroupItem>
 
             <ListGroupItem className=" delivery__time-item border-0 ps-0">
-              <span><strong>Email:</strong> example@gmail.com</span>
+              <span style={{color:'#333'}}><strong>Email:</strong> example@gmail.com</span>
             </ListGroupItem>
           </ListGroup>
         </Col>
@@ -65,7 +65,8 @@ export default function Footer() {
                     borderRadius: '50%',
                     fontWeight: 500,
                     fontSize:25,
-                    width:30
+                    width:50,
+                    textAlign:'center'
                 }}
             ></i>
             </span>

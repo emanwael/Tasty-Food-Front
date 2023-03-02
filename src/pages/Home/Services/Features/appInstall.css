@@ -1,0 +1,45 @@
+.install-app {
+  background: linear-gradient(
+    106.37deg,
+    #ffe1bc 29.63%,
+    #ffb0709a 51.55%,
+    #ffebcf 90.85%
+  );
+  padding: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  height: auto;
+}
+.title {
+  text-align: center;
+  font-weight: bold;
+  padding: 20px;
+  color: black;
+}
+
+.desc {
+  font-size: 25px;
+  padding: 20px;
+}
+
+.icon img {
+  width: 200px;
+  padding: 10px;
+}
+
+.icon img:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .desc {
+    font-size: 0.7rem;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .install-app {
+    padding-top: 0 !important;
+  }
+}

@@ -8,7 +8,7 @@ export default function ChooseUs() {
     <Container>
       <Row>
         <Col lg="6" md="6">
-          <img src='./images/location.png' alt="why-tasty-treat" className="w-100" />
+          <img src='./images/review.png' alt="why-tasty-treat" className="w-100" />
         </Col>
 
         <Col lg="6" md="6">
@@ -26,15 +26,8 @@ export default function ChooseUs() {
             <ListGroup className="mt-4">
               <ListGroupItem className="border-0 ps-0">
                 <p className=" choose__us-title d-flex align-items-center gap-2 ">
-                <i class="fa-solid fa-check"
-                  style={{
-                    padding: 5,
-                    background: '#df2020',
-                    color: '#fff',
-                    borderRadius: '50%',
-                    fontWeight: 500,
-                  }}></i> Fresh and tasty
-                  foods
+                <i class="fa-solid fa-circle-check" style={{color:'#f67240'}}></i>
+                  Fresh and tasty foods
                 </p>
                 <p className="choose__us-desc">
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -44,14 +37,8 @@ export default function ChooseUs() {
 
               <ListGroupItem className="border-0 ps-0">
                 <p className="choose__us-title d-flex align-items-center gap-2 ">
-                <i class="fa-solid fa-check"
-                  style={{
-                    padding: 5,
-                    background: '#df2020',
-                    color: '#fff',
-                    borderRadius: '50%',
-                    fontWeight: 500,
-                  }}></i> Quality support
+                <i class="fa-solid fa-circle-check" style={{color:'#f67240'}}></i>
+                 Quality support
                 </p>
                 <p className="choose__us-desc">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -61,14 +48,8 @@ export default function ChooseUs() {
 
               <ListGroupItem className="border-0 ps-0">
                 <p className="choose__us-title d-flex align-items-center gap-2 ">
-                <i class="fa-solid fa-check"
-                  style={{
-                    padding: 5,
-                    background: '#df2020',
-                    color: '#fff',
-                    borderRadius: '50%',
-                    fontWeight: 500,
-                  }}></i>Order from any
+                <i class="fa-solid fa-circle-check" style={{color:'#f67240'}}></i>
+                  Order from any
                   location{" "}
                 </p>
                 <p className="choose__us-desc">

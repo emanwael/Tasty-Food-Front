@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import "./myNavbar.css";
 import "../home.css";
-import { Container, NavLink } from "react-bootstrap";
+import {  Container, NavDropdown, NavLink } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import ButtonCartCount from "../../restaurant-profile/components/common/ButtonCartCount";
 
@@ -74,7 +74,25 @@ export default function MyNavbar() {
               <span className="cart__badge"></span>
             </span> */}
             <ButtonCartCount />
-            <span className="user">
+
+            <NavDropdown title='Account' id="basic-nav-dropdown" className="fw-bold">
+              <NavDropdown.Item>
+                <Link to='/user' className='link'>
+                  <i class='fa-solid fa-circle-user' style={{fontSize: 25 , color:'black'}}></i> Profile
+                </Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item >
+                <Link to='/customer-login' className='link'>
+                  <i class="fa-solid fa-right-to-bracket" style={{fontSize: 25 , color:'black'}}></i> Login
+                </Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to='/customer-register' className='link'>
+                  <i class="fa-solid fa-right-from-bracket" style={{fontSize: 25 , color:'black'}}></i> Logout
+                </Link>
+              </NavDropdown.Item>
+            </NavDropdown>
+            {/* <span className="user">
               <Link to="/login">
                 <i
                   class="fa-solid fa-user"
@@ -84,7 +102,7 @@ export default function MyNavbar() {
                   }}
                 ></i>
               </Link>
-            </span>
+            </span> */}
             <span className="mobile__menu" onClick={toggleMenu}>
               <i class="fa-sharp fa-solid fa-bars"></i>
             </span>

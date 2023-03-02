@@ -7,8 +7,8 @@ export default function Customers() {
     dots: true,
     autoplay: true,
     infinite: true,
-    speed: 1000,
-    autoplaySpeed: 2000,
+    speed: 2000,
+    autoplaySpeed: 3000,
     swipeToSlide: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -16,7 +16,7 @@ export default function Customers() {
   return (
     <Carousel {...settings}>
       <Carousel.Item>
-        <div>
+        <div className='review-content'>
           <p className="review__text">
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
             atque, quam minus totam maiores laborum! Impedit consectetur illum
@@ -31,7 +31,7 @@ export default function Customers() {
       </Carousel.Item>
 
       <Carousel.Item>
-        <div>
+        <div className='review-content'>
           <p className="review__text">
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
             atque, quam minus totam maiores laborum! Impedit consectetur illum
@@ -46,7 +46,7 @@ export default function Customers() {
       </Carousel.Item>
 
       <Carousel.Item>
-        <div>
+        <div className='review-content'>
           <p className="review__text">
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
             atque, quam minus totam maiores laborum! Impedit consectetur illum

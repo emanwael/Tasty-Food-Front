@@ -1,7 +1,13 @@
 .footer {
   padding-top: 50px;
   padding-bottom: 30px;
-  background: #f67240;
+  background: linear-gradient(
+    106.37deg,
+    #ffe1bc 29.63%,
+    #ffb0709a 51.55%,
+    #ffebcf 90.85%
+  );
+  /* background: #eb480da2; */
 }
 
 .footer__logo img {

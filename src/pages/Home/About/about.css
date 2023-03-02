@@ -1,58 +1,63 @@
-.menu-section {
-  padding: 70px;
-  margin-top: 0;
-  background-image: url(../images/vegetables-set-left-black-slate.jpg);
+.columns {
+  display: grid;
+}
+.grids {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+.containers {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.service {
+  /* background-image: url(../../photos/sidebar/copy-space-roses-flowers.jpg);
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed; */
+  padding: 50px 0;
+  margin-top: 20px;
+  height: 100%;
 }
-
-.menu-title {
+.service .grids {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 15px;
+}
+.service h2 {
   text-align: center;
-  color: #fff;
-  margin-bottom: 20px;
+  padding-top: 10px;
 }
-.category__item {
-  background: #fff;
-  margin: 20px;
+.cards {
+  padding-top: 20px;
+}
+.s-card {
+  text-align: center;
+  background-color: hwb(29 4% 0% / 0.763);
   padding: 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.4s;
-  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 5px 0px 10px rgba(181, 181, 181, 0.25),
+    0px 5px 10px rgba(254, 211, 158, 0.25);
 }
-
-.category__item:hover {
-  transform: translateY(-15px);
-  background-color: #f67240;
+.s-card:hover {
+  transform: scale(1.1);
+  transition: 0.5s ease-in-out;
 }
-
-@media only screen and (max-width: 768px) {
-  .category__item {
-    padding: 20px 15;
-    flex-wrap: wrap;
-  }
-  .category__img img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .category__item h6 {
-    font-size: 0.8rem;
-  }
+.s-card img {
+  max-width: 50px;
+  padding-bottom: 10px;
 }
-@media only screen and (max-width: 490px) {
-  .category__item {
-    padding: 5px 10px;
-    flex-wrap: wrap;
-  }
-  .category__img img {
-    width: 20px;
-    height: 20px;
-  }
-
-  .category__item h6 {
-    font-size: 8px;
-    font-weight: bold;
-  }
+.s-card i {
+  font-size: 50px;
+  padding-bottom: 10px;
+  color: black;
+}
+.s-card i:hover {
+  color: #fff;
+  transition: 0.3s ease-in-out;
+}
+.s-card h4 {
+  color: black;
+  margin-top: 1em;
+  transition: 0.5s ease-in-out;
 }

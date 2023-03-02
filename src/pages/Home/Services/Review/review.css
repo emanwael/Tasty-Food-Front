@@ -1,7 +1,14 @@
+.review-content {
+  border-radius: 50px 10px 5px;
+  padding: 20px;
+  border-style: double;
+}
+
 .review__text {
-  color: #777;
+  color: black;
   line-height: 30px;
   margin: 40px 0px;
+  font-weight: bold;
 }
 
 .slider__content img {

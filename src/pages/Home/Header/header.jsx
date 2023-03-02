@@ -9,7 +9,7 @@ import '../home.css'
 export default function Header() {
   return (
     <Carousel fade>
-      <Carousel.Item interval={3000}>
+      <Carousel.Item interval={5000}>
         <section>
           <Container>
             <Row>
@@ -22,8 +22,9 @@ export default function Header() {
                   </h1>
 
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui
-                    magni delectus tenetur autem, sint veritatis!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Aliquam odit ducimus aut accusamus obcaecati pariatur perferendis, 
+                    sed qui commodi dolore dolorem, inventore in libero iusto optio tempora error esse nesciunt.
                   </p>
 
                   <div className="hero__btns d-flex align-items-center gap-5 mt-4">
@@ -32,7 +33,7 @@ export default function Header() {
                     </button>
 
                     <button className="all__foods-btn">
-                      <Link to="/foods">See all foods</Link>
+                      <Link to="/foods" className='link'>See all foods</Link>
                     </button>
                   </div>
 
@@ -40,7 +41,7 @@ export default function Header() {
                     <p className=" d-flex align-items-center gap-2 ">
                       <span className="shipping__icon">
                         <i 
-                        class="fa-solid fa-truck-fast" 
+                        class="fa-thin fa-truck"
                         style={{
                           padding: 10,
                           background: '#f67240',
@@ -92,8 +93,9 @@ export default function Header() {
                   </h1>
 
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui
-                    magni delectus tenetur autem, sint veritatis!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Aliquam odit ducimus aut accusamus obcaecati pariatur perferendis, 
+                    sed qui commodi dolore dolorem, inventore in libero iusto optio tempora error esse nesciunt.
                   </p>
 
                   <div className="hero__btns d-flex align-items-center gap-5 mt-4">
@@ -102,7 +104,7 @@ export default function Header() {
                     </button>
 
                     <button className="all__foods-btn">
-                      <Link to="/foods">See all foods</Link>
+                      <Link to="/foods" className='link'>See all foods</Link>
                     </button>
                   </div>
 
@@ -141,7 +143,7 @@ export default function Header() {
 
               <Col lg="6" md="6">
                 <div className="hero__img">
-                  <img src='./images/location.png' alt="hero-img" className="w-100" />
+                  <img src='./images/Order food-pana.png' alt="hero-img" className="w-100" />
                 </div>
               </Col>
             </Row>
@@ -162,8 +164,9 @@ export default function Header() {
                   </h1>
 
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui
-                    magni delectus tenetur autem, sint veritatis!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Aliquam odit ducimus aut accusamus obcaecati pariatur perferendis, 
+                    sed qui commodi dolore dolorem, inventore in libero iusto optio tempora error esse nesciunt.
                   </p>
 
                   <div className="hero__btns d-flex align-items-center gap-5 mt-4">
@@ -172,7 +175,7 @@ export default function Header() {
                     </button>
 
                     <button className="all__foods-btn">
-                      <Link to="/foods">See all foods</Link>
+                      <Link to="/foods" className='link'>See all foods</Link>
                     </button>
                   </div>
 
@@ -211,7 +214,7 @@ export default function Header() {
 
               <Col lg="6" md="6">
                 <div className="hero__img">
-                  <img src='./images/credit_card.png' alt="hero-img" className="w-100" />
+                  <img src='./images/payment.png' alt="hero-img" className="w-100" />
                 </div>
               </Col>
             </Row>
