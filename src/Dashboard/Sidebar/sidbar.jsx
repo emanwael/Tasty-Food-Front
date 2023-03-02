@@ -58,7 +58,7 @@ export default function Sidbar() {
 
         <div className="sidebar__bottom">
           <span>
-            <i class="fa-solid fa-circle-user mx-3"></i> Logout
+            <i className="fa-solid fa-circle-user mx-3"></i> Logout
           </span>
         </div>
       </div>

@@ -29,10 +29,10 @@ export default function AdminMenu() {
   /////////////////
   const navigate = useNavigate();
   const gotoAdd = () => {
-    navigate("/add");
+    navigate(`/add/${id}`);
   };
-  const gotoEdite = () => {
-    navigate("/edit");
+  const gotoEdite = (mealId) => {
+    navigate(`/edit/${mealId}`);
   };
   ////
   const menu =
@@ -60,13 +60,15 @@ export default function AdminMenu() {
               key={e._id}
               dispatch={dispatch}
               deletMeal={deletMeal}
-              edit={gotoEdite}
+              edit={() => {
+                gotoEdite(e._id);
+              }}
             />
           );
         })
     );
 
-  console.log(filtered);
+  // console.log(filtered);
   /////////////////
 
   return (

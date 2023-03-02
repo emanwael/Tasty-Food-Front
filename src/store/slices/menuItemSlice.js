@@ -4,6 +4,7 @@ import axios from "axios";
 const baseURL = "http://localhost:5100/meals";
 let initialState = {
   MenuItemsList: [],
+  MenuItem: {},
   errors: [],
   isLoading: false,
 };
@@ -89,7 +90,7 @@ const MenuItemsSlice = createSlice({
     },
     [getMenuItemById.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.MenuItemsList = action.payload;
+      state.MenuItem = action.payload;
     },
     [getMenuItemById.rejected]: (state, action) => {
       state.isLoading = false;

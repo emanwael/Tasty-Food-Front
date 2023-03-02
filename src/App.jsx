@@ -23,8 +23,6 @@ function App() {
   );
   return (
     <div>
-      {/* <Layout></Layout> */}
-
       <Elements stripe={stripePromise}>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -33,15 +31,13 @@ function App() {
           <Route path="/customer-register" element={<CustomerRegister />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-register" element={<AdminRegister />} />
-          <Route path="/add" element={<ManageItemForm mode="add" />} />
-          <Route path="/edit" element={<ManageItemForm mode="edit" />} />
+          <Route path="/add/:id" element={<ManageItemForm mode="add" />} />
+          <Route path="/edit/:id" element={<ManageItemForm mode="edit" />} />
           <Route path="adminMenue/:id" element={<Adminmenu />} />
-
           <Route path="/restaurant/:id" element={<HomeRestaurant />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/user" element={<Profile />} />
-
           <Route path="/admin" element={<Layout />} />
         </Routes>
       </Elements>

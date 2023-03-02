@@ -1,29 +1,40 @@
 import "./manageItemForm.css";
+import Sidbar from "../../Dashboard/Sidebar/sidbar";
+import { addMenuItem, editMenuItem } from "../../store/slices/menuItemSlice";
 
 import React, { useState, useEffect } from "react";
-import { addMenuItem, editMenuItem } from "../../store/slices/menuItemSlice";
-import { useDispatch, useSelector } from "react-redux";
-import Sidbar from "../../Dashboard/Sidebar/sidbar";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-function ManageItemForm({ mode, item, restaurant }) {
+function ManageItemForm({ mode }) {
   // set form values based on mode
+  const { id } = useParams();
   useEffect(() => {
     if (mode === "edit") {
-      setFormState({
-        itemName: item.itemName,
-        itemPrice: item.itemPrice,
-        itemGroup: item.itemGroup,
-        itemDescription: item.itemDescription,
-        itemImage: item.itemImage,
-        itemStatus: item.itemStatus,
-        valid: true,
-      });
-      setImagePreview(item.itemImage);
+      getItem();
     }
   }, []);
 
   // api connection setup
   const dispatch = useDispatch();
+  const getItem = () => {
+    axios
+      .get(`http://localhost:5100/meals/${id}`)
+      .then((result) => {
+        setFormState({
+          itemName: result.data.meal_name,
+          itemPrice: result.data.price,
+          itemGroup: result.data.food_group,
+          itemDescription: result.data.description,
+          itemImage: result.data.meal_img,
+          itemStatus: result.data.is_available,
+          valid: true,
+        });
+        setImagePreview(result.data.meal_img);
+      })
+      .catch((err) => console.log(err));
+  };
   const addItemOfForm = () => {
     let newItem = {
       meal_name: formState.itemName,
@@ -32,25 +43,24 @@ function ManageItemForm({ mode, item, restaurant }) {
       meal_img: formState.itemImage,
       food_group: formState.itemGroup,
       is_available: formState.itemStatus,
-      restaurant,
+      restaurant: id,
     };
     dispatch(addMenuItem(newItem));
   };
   const editItemOfForm = () => {
     let newItem = {
-      _id: item._id,
+      _id: id,
       meal_name: formState.itemName,
       description: formState.itemDescription,
       price: formState.itemPrice,
       meal_img: formState.itemImage,
       food_group: formState.itemGroup,
       is_available: formState.itemStatus,
-      restaurant,
     };
     dispatch(editMenuItem(newItem));
   };
 
-  // form upate & validation
+  // form update & validation
   let [formTouches, setFormTouches] = useState({
     itemName: false,
     itemPrice: false,
@@ -70,22 +80,6 @@ function ManageItemForm({ mode, item, restaurant }) {
     valid: false,
   });
 
-  // update item availablity
-  const updateItemStatus = (e) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.checked,
-    });
-  };
-
-  const updateFormState = (e) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    });
-    setFormTouches({ ...formTouches, [e.target.name]: true });
-  };
-
   const validateFormData = () => {
     if (
       formState.itemName &&
@@ -104,15 +98,35 @@ function ManageItemForm({ mode, item, restaurant }) {
     }
   };
 
+  const updateFormState = (e) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
+    setFormTouches({ ...formTouches, [e.target.name]: true });
+  };
+
+  // update item availablity
+  const updateItemStatus = (e) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.checked,
+    });
+  };
+
   // image select & preview
   let [imagePreview, setImagePreview] = useState(
     "https://blog.nscsports.org/wp-content/uploads/2014/10/default-img.gif"
   );
   const preview_image = (e) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    });
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onloadend = () => {
+      setFormState({
+        ...formState,
+        itemImage: reader.result,
+      });
+    };
     setImagePreview(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -193,16 +207,6 @@ function ManageItemForm({ mode, item, restaurant }) {
                   name="itemImage"
                   onChange={preview_image}
                 ></input>
-                {/* <div className="file-upload-select">
-              <div className="file-select-button">Choose File</div>
-              <div className="file-select-name">No file chosen </div>
-              <input
-                type="file"
-                name="itemImage"
-                id="itemImage"
-                onChange={preview_image}
-              />
-            </div> */}
               </div>
             </form>
           </div>
@@ -225,7 +229,7 @@ function ManageItemForm({ mode, item, restaurant }) {
                 Toggle
               </label>
             </div>
-            <div className="">
+            <div className="form-btn">
               {mode === "add" && (
                 <button className="add-item-button" onClick={validateFormData}>
                   Add Menu Item
@@ -248,31 +252,3 @@ function ManageItemForm({ mode, item, restaurant }) {
 }
 
 export default ManageItemForm;
-
-///////////////////////////////////
-//////!!! how to run
-//////!!! run in edit mode/////
-// {
-//   //   <ManageItemForm
-//   //   mode="edit"
-//   //   item={{
-//   //     _id: "item_id as a string",
-//   //     itemName: "old name",
-//   //     itemDescription: "old desctiption",
-//   //     itemGroup: "old Group",
-//   //     itemPrice: 50,
-//   //     itemImage:
-//   //       "http://metropolitanhost.com/themes/themeforest/react/costic/assets/img/costic/add-product-1.jpg",
-//   //     itemStatus: true,
-//   //   }}
-//   //   restaurant={"restaurant_id as a string"}
-//   // ></ManageItemForm>
-// }
-// //////!!! run in add mode/////
-// {
-//   /* <ManageItemForm
-//       mode="add"
-//       restaurant={"restaurant_id as a string"}
-//     ></ManageItemForm> */
-// }
-// /////////////////////////////////////
