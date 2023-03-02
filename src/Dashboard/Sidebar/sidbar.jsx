@@ -10,18 +10,13 @@ const navLinks = [
   },
   {
     path: "/adminMenue/63d1867c42eb0fcac7149f49",
-    icon: "fa-solid fa-circle-user",
+    icon: "fa-solid fa-bars",
     display: "Menu",
   },
   {
     path: "/add",
-    icon: "fa-solid fa-circle-user",
+    icon: "fa-solid fa-square-plus",
     display: "add",
-  },
-  {
-    path: "/analysis",
-    icon: "fa-solid fa-circle-user",
-    display: "Analysis",
   },
 ];
 
@@ -30,17 +25,17 @@ export default function Sidbar() {
   return (
     <div className="sidebar">
       <div className="sidebar__top">
-        <div className="logo">
+        <div className="logo mt-5 ">
           <img src="./images/logo.png" alt="logo" />
         </div>
         <h5>TASTY FOOD</h5>
       </div>
 
-      <div className="sidebar__content">
+      <div className="sidebar__content ">
         <div className="menu">
           <ul className="nav__list">
             {navLinks.map((item, index) => (
-              <li className="nav__item p-2" key={index}>
+              <li className="nav__item p-2 " key={index}>
                 <NavLink
                   onClick={() => {
                     navigate(item.path);
@@ -50,7 +45,9 @@ export default function Sidbar() {
                     navClass.isActive ? "nav__active nav__link" : "nav__link"
                   }
                 >
-                  <i className={item.icon}></i>
+                  <span className=" mx-3  text-white">
+                    <i className={item.icon}></i>
+                  </span>
 
                   {item.display}
                 </NavLink>
@@ -61,7 +58,7 @@ export default function Sidbar() {
 
         <div className="sidebar__bottom">
           <span>
-            <i class="fa-solid fa-circle-user"></i> Logout
+            <i class="fa-solid fa-circle-user mx-3"></i> Logout
           </span>
         </div>
       </div>

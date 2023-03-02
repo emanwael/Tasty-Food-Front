@@ -84,7 +84,7 @@ export default function AdminMenu() {
 
               <input
                 type="text"
-                className="input col-8 mx-2 rounded"
+                className="  input_form col-8 mx-2 rounded"
                 onChange={(e) => {
                   setSearch(e.target.value);
                 }}

@@ -20,10 +20,10 @@ export function Category({ meal, edit }) {
           <h2 style={{ fontSize: "0.8rem" }}>{meal.meal_name}</h2>
 
           <div className="text-center icons">
-            <button onClick={edit}>
+            <button onClick={edit} className="buttonn">
               <i className="fa-solid fa-pen-to-square"></i>
             </button>
-            <button variant="none" onClick={handleShow}>
+            <button variant="none" onClick={handleShow} className="buttonn">
               <i className="fa-solid fa-trash"></i>
             </button>
           </div>

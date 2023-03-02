@@ -1,37 +1,44 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Filter({ setFiltered, active, setActive }) {
-    const { meals, myMenu } = useSelector(store => store.mealSlice)
-    useEffect(() => {
-        if (active === '') {
-            setFiltered(myMenu);
-            return;
-        }
-        const filter = myMenu.filter((e) => {
-            return (e.food_group == active)
+  const { meals, myMenu } = useSelector((store) => store.mealSlice);
+  useEffect(() => {
+    if (active === "") {
+      setFiltered(myMenu);
+      return;
+    }
+    const filter = myMenu.filter((e) => {
+      return e.food_group == active;
+    });
+    setFiltered(filter);
+  }, [active]);
 
-        })
-        setFiltered(filter)
-    }, [active])
+  return (
+    <div className="filter-container">
+      <button
+        className="buttonn"
+        onClick={() => {
+          setActive("");
+        }}
+      >
+        all{" "}
+      </button>
 
-    return (
-        <div className='filter-container'>
-
-            <button onClick={() => {
-                setActive('')
-            }}>all </button>
-
-            {
-                meals.map((e, i) => {
-                    return (< button key={i} onClick={() => {
-                        setActive(e)
-                    }}> {e}</button>)
-                })
-
-
-            }
-        </div >
-    )
+      {meals.map((e, i) => {
+        return (
+          <button
+            className="buttonn"
+            key={i}
+            onClick={() => {
+              setActive(e);
+            }}
+          >
+            {" "}
+            {e}
+          </button>
+        );
+      })}
+    </div>
+  );
 }
