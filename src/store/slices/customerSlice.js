@@ -66,7 +66,11 @@ export const makeOrder = createAsyncThunk(
 const CustomersSlice = createSlice({
   name: "Customers",
   initialState,
-  reducers: {},
+  reducers: {
+    logoutCustomer: (state, action) => {
+      state.customerData = {};
+    },
+  },
   extraReducers: {
     [signCustomerIn.pending]: (state, action) => {
       state.isLoading = true;

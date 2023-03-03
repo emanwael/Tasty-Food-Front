@@ -2,9 +2,12 @@ import React, { useRef } from "react";
 
 import "./myNavbar.css";
 import "../home.css";
-import {  Container, NavDropdown, NavLink } from "react-bootstrap";
+import { Container, NavDropdown, NavLink } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import ButtonCartCount from "../../restaurant-profile/components/common/ButtonCartCount";
+import { CustomersActions } from "../../../store/slices/customerSlice";
+import { useDispatch, useSelector } from "react-redux";
+let { logoutCustomer } = CustomersActions;
 
 const nav__links = [
   {
@@ -29,8 +32,10 @@ export default function MyNavbar() {
   const menuRef = useRef(null);
   const headerRef = useRef(null);
 
+  const dispatch = useDispatch();
   const navigator = useNavigate();
   const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
+  const { customerData } = useSelector((store) => store.customers);
 
   return (
     <header className="header header__shrink" ref={headerRef}>
@@ -75,23 +80,73 @@ export default function MyNavbar() {
             </span> */}
             <ButtonCartCount />
 
-            <NavDropdown title='Account' id="basic-nav-dropdown" className="fw-bold">
-              <NavDropdown.Item>
-                <Link to='/user' className='link'>
-                  <i class='fa-solid fa-circle-user' style={{fontSize: 25 , color:'black'}}></i> Profile
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item >
-                <Link to='/customer-login' className='link'>
-                  <i class="fa-solid fa-right-to-bracket" style={{fontSize: 25 , color:'black'}}></i> Login
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to='/customer-register' className='link'>
-                  <i class="fa-solid fa-right-from-bracket" style={{fontSize: 25 , color:'black'}}></i> Logout
-                </Link>
-              </NavDropdown.Item>
+            <NavDropdown
+              title="Account"
+              id="basic-nav-dropdown"
+              className="fw-bold"
+            >
+              {!customerData._id && (
+                <NavDropdown.Item>
+                  <Link to="/customer-login" className="link">
+                    <i
+                      class="fa-solid fa-right-to-bracket"
+                      style={{ fontSize: 25, color: "black" }}
+                    ></i>{" "}
+                    Login
+                  </Link>
+                </NavDropdown.Item>
+              )}
+              {!customerData._id && (
+                <NavDropdown.Item>
+                  <Link to="/customer-register" className="link">
+                    <i
+                      class="fa-solid fa-right-to-bracket"
+                      style={{ fontSize: 25, color: "black" }}
+                    ></i>{" "}
+                    Create Account
+                  </Link>
+                </NavDropdown.Item>
+              )}
+              {customerData._id && (
+                <NavDropdown.Item>
+                  <Link to="/user" className="link">
+                    <i
+                      class="fa-solid fa-circle-user"
+                      style={{ fontSize: 25, color: "black" }}
+                    ></i>{" "}
+                    Profile
+                  </Link>
+                </NavDropdown.Item>
+              )}
+
+              {customerData._id && (
+                <NavDropdown.Item>
+                  <Link
+                    to="/customer-login"
+                    onClick={() => {
+                      dispatch(logoutCustomer());
+                    }}
+                    className="link"
+                  >
+                    <i
+                      class="fa-solid fa-right-from-bracket"
+                      style={{ fontSize: 25, color: "black" }}
+                    ></i>{" "}
+                    Logout
+                  </Link>
+                </NavDropdown.Item>
+              )}
             </NavDropdown>
+            <NavLink
+              onClick={() => {
+                navigator("/admin-register");
+              }}
+              className={(navClass) =>
+                navClass.isActive ? "active__menu" : ""
+              }
+            >
+              for restaurants
+            </NavLink>
             {/* <span className="user">
               <Link to="/login">
                 <i
