@@ -42,7 +42,7 @@
   margin-top: 100px;
 }
 
-.menu {
+.menuu {
   height: 80%;
 }
 
@@ -71,18 +71,18 @@
   display: flex;
   row-gap: 2rem;
   flex-direction: column;
-  color: #fff;
+  /* color: #000000; */
   font-size: 20px;
   font-weight: bold;
   padding: 5px;
 }
 .nav__link i {
-  color: var(--secondary-color);
+  color: rgb(253, 0, 0);
   margin: 10px;
 }
 
 .nav__active {
-  color: white;
+  color: rgb(178, 55, 55);
   background: #b7ffe913;
   padding: 6px;
   border-radius: 5px;

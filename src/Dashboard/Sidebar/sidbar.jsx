@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-bootstrap";
 import "./sidbar.css";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +22,7 @@ const navLinks = [
 
 export default function Sidbar() {
   const navigate = useNavigate();
+  const [Active, setActive] = useState(false);
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -32,17 +33,19 @@ export default function Sidbar() {
       </div>
 
       <div className="sidebar__content ">
-        <div className="menu">
+        <div className="menuu">
           <ul className="nav__list">
             {navLinks.map((item, index) => (
               <li className="nav__item p-2 " key={index}>
                 <NavLink
                   onClick={() => {
+                    setActive(true);
+                    console.log(Active);
                     navigate(item.path);
                   }}
                   to={item.path}
-                  className={(navClass) =>
-                    navClass.isActive ? "nav__active nav__link" : "nav__link"
+                  className={() =>
+                    Active == true ? "nav__active nav__link" : "nav__link"
                   }
                 >
                   <span className=" mx-3  text-white">

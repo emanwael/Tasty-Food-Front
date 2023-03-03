@@ -39,6 +39,7 @@
 
 .head_desc-name {
   font-weight: 600;
+      color: black;
   font-size: 0.9rem;
   text-transform: capitalize;
   flex: 1;
