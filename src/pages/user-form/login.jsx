@@ -42,7 +42,7 @@ export default function CustomerLogin() {
   };
   // api connection setup
   const dispatch = useDispatch();
-  const { customerData } = useSelector((store) => store.customers);
+  const { customerData, isLoading } = useSelector((store) => store.customers);
   const signInCustomerOfForm = () => {
     dispatch(
       signCustomerIn({ email: formState.email, password: formState.password })
@@ -118,9 +118,18 @@ export default function CustomerLogin() {
             )}
             {formTouches.formSubmitted &&
               formState.valid &&
-              !customerData._id && (
+              !customerData._id &&
+              !isLoading && (
                 <span className="error-message input d-block">
-                  Login Failed: Your email or password is incorrect
+                  Login Failed: your email or password is incorrect
+                </span>
+              )}
+            {formTouches.formSubmitted &&
+              formState.valid &&
+              !customerData._id &&
+              isLoading && (
+                <span className="error-message input d-block">
+                  Loading ...{" "}
                 </span>
               )}
             <p className="text-dark p-0">

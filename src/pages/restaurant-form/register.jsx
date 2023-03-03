@@ -68,7 +68,7 @@ export default function AdminRegister() {
 
   // api connection setup
   const dispatch = useDispatch();
-  const { AdminData } = useSelector((store) => store.admins);
+  const { AdminData, isLoading } = useSelector((store) => store.admins);
 
   const addAdminOfForm = () => {
     dispatch(addAdmin(formState));
@@ -241,11 +241,20 @@ export default function AdminRegister() {
               Please Fill all the fields
             </span>
           )}
-          {formTouches.formSubmitted && formState.valid && !AdminData._id && (
-            <span className="error-message input_form d-block">
-              that email address is already in use
-            </span>
-          )}
+          {formTouches.formSubmitted &&
+            formState.valid &&
+            !AdminData._id &&
+            !isLoading && (
+              <span className="error input-block">
+                the email address is already in use
+              </span>
+            )}
+          {formTouches.formSubmitted &&
+            formState.valid &&
+            !AdminData._id &&
+            isLoading && (
+              <span className="error input-block">Loading ... </span>
+            )}
           <p className=" p">
             Already have an account?
             <a href="/admin-login" className="fw-bold">

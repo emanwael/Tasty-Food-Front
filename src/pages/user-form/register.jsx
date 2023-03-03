@@ -56,7 +56,7 @@ export default function Register() {
   };
   // api connection setup
   const dispatch = useDispatch();
-  const { customerData } = useSelector((store) => store.customers);
+  const { customerData, isLoading } = useSelector((store) => store.customers);
   const addCustomerOfForm = () => {
     let newCustomer = {
       customer_name: `${formState.firstName} ${formState.lastName}`,
@@ -191,9 +191,18 @@ export default function Register() {
             )}
             {formTouches.formSubmitted &&
               formState.valid &&
-              !customerData._id && (
+              !customerData._id &&
+              !isLoading && (
                 <span className="error-message input d-block">
-                  that email address is already in use
+                  the email address is already in use
+                </span>
+              )}
+            {formTouches.formSubmitted &&
+              formState.valid &&
+              !customerData._id &&
+              isLoading && (
+                <span className="error-message input d-block">
+                  Loading ...{" "}
                 </span>
               )}
             <p className="text-dark p-0">

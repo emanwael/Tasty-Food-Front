@@ -43,7 +43,7 @@ export default function AdminLogin() {
   };
   // api connection setup
   const dispatch = useDispatch();
-  const { AdminData } = useSelector((store) => store.admins);
+  const { AdminData, isLoading } = useSelector((store) => store.admins);
   const signInAdminOfForm = () => {
     dispatch(signAdminIn(formState));
   };
@@ -104,11 +104,20 @@ export default function AdminLogin() {
               please fill all the fields{" "}
             </span>
           )}
-          {formTouches.formSubmitted && formState.valid && !AdminData._id && (
-            <span className="error input-block">
-              Login Failed: Your email or password is incorrect
-            </span>
-          )}
+          {formTouches.formSubmitted &&
+            formState.valid &&
+            !AdminData._id &&
+            !isLoading && (
+              <span className="error input-block">
+                Login Failed: Your email or password is incorrect
+              </span>
+            )}
+          {formTouches.formSubmitted &&
+            formState.valid &&
+            !AdminData._id &&
+            isLoading && (
+              <span className="error input-block">Loading ... </span>
+            )}
           <p className="p-3 p">
             Have no account yet?
             <a href="/admin-register" className="fw-bold">

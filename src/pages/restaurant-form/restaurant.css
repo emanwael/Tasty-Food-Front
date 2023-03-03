@@ -34,19 +34,19 @@
   align-items: center;
 }
 
-.restaurant_container h2 {
+.restaurant_signup h2 {
   font-size: 40px;
   margin: 20px;
   color: #212121;
 }
 
-h2 {
+.restaurant_signup h2 {
   padding-bottom: 10px;
   margin-bottom: 10px;
   position: relative;
 }
 
-h2::after {
+.restaurant_signup h2::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -58,7 +58,7 @@ h2::after {
   background-color: rgb(246, 114, 64);
 }
 
-.input_form {
+.restaurant_signup .input_form {
   outline: none;
   border: none;
   width: 400px;
@@ -70,10 +70,10 @@ h2::after {
   transition: 0.5s;
 }
 
-input[type="checkbox"] {
+.restaurant_signup input[type="checkbox"] {
   margin: 5px;
 }
-label {
+.restaurant_signup label {
   width: 110px;
   padding: 10px;
   margin-right: 50px;
@@ -81,19 +81,19 @@ label {
   font-weight: bold;
   color: rgb(246, 114, 64);
 }
-label:hover {
+.restaurant_signup label:hover {
   color: #fff;
 }
-.input_form:hover {
+.restaurant_signup .input_form:hover {
   background-color: rgba(0, 0, 0, 0.477);
 }
 
-.input_form:focus {
+.restaurant_signup .input_form:focus {
   background-color: #fff;
   border: 2px solid rgb(246, 114, 64);
 }
 
-.button {
+.restaurant_signup .button {
   transition: 0.5s;
   border: none;
   outline: none;
@@ -116,14 +116,14 @@ label:hover {
     /* grid-template-columns: 1fr; */
     width: 600px;
   }
-  .input_form {
+  .restaurant_signup .input_form {
     width: 300px;
     padding: 10px;
     margin: 10px;
     font-size: 18px;
     display: block;
   }
-  label {
+  .restaurant_signup label {
     width: 90px;
     padding: 5px;
     margin-right: 20px;
@@ -135,25 +135,25 @@ label:hover {
     /* grid-template-columns: 1fr; */
     width: 400px;
   }
-  .input_form,
-  .button,
-  a {
+  .restaurant_signup .input_form,
+  .restaurant_signup .button,
+  .restaurant_signup a {
     width: 150px;
     padding: 10px 0;
     margin: 7px;
     font-size: 10px;
   }
-  .input_form {
+  .restaurant_signup .input_form {
     width: 220px;
     padding: 10px;
   }
-  .p {
+  .restaurant_signup .p {
     font-size: 10px;
   }
-  .restaurant_container h2 {
+  .restaurant_signup h2 {
     font-size: 20px;
   }
-  label {
+  .restaurant_signup label {
     width: 60px;
     padding: 5px;
     margin-right: 10px;
@@ -161,26 +161,26 @@ label:hover {
   }
 }
 
-.sign-button {
+.restaurant_signup .sign-button {
   background-color: rgb(246, 114, 64);
   color: #fff;
   margin: 50px auto;
 }
 
-a {
+.restaurant_signup a {
   text-decoration-line: none;
 }
-a:hover {
+.restaurant_signup a:hover {
   color: rgb(246, 114, 64);
 }
 
-.p {
+.restaurant_signup .p {
   font-size: 18px;
   color: #fff;
   font-weight: 600;
 }
 
-.p a {
+.restaurant_signup .p a {
   font-size: 18px;
   color: #fff;
   font-weight: bold;
@@ -191,7 +191,7 @@ a:hover {
   margin: 5px;
 }
 
-.error {
+.restaurant_signup .error {
   color: #212121;
   padding: 3px;
   text-align: left;
@@ -205,14 +205,14 @@ a:hover {
   .right_side {
     width: 200px;
   }
-  .button {
+  .restaurant_signup .button {
     width: 100px;
     font-size: 10px;
   }
-  .p {
+  .restaurant_signup .p {
     font-size: 10px;
   }
-  .p a {
+  .restaurant_signup .p a {
     font-size: 10px;
   }
 }
