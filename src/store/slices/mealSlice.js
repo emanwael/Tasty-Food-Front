@@ -64,8 +64,9 @@ const mealSlice = createSlice({
     [deletMeal.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.myMenu = state.myMenu.filter((item) => {
-        if (item._id != action.payload._id) return item;
+        if (item._id != action.payload.deletedMeal._id) return item;
       });
+      state.meals = action.payload.meals;
     },
     [deletMeal.rejected]: (state, action) => {
       state.isLoading = false;
