@@ -13,9 +13,9 @@ export default function AdminRegister() {
     email: false,
     password: false,
     phone: false,
+    category: false,
     branchName: false,
     branchAddress: false,
-    branchLocation: false,
     paymentMethods: false,
     formSubmitted: false,
   });
@@ -25,9 +25,9 @@ export default function AdminRegister() {
     email: "",
     password: "",
     phone: "",
+    category: "",
     branchName: "",
     branchAddress: "",
-    branchLocation: "",
     paymentMethod: [],
     valid: false,
   });
@@ -39,7 +39,7 @@ export default function AdminRegister() {
         formState.password,
       formState.branchName,
       formState.branchAddress,
-      formState.branchLocation,
+      formState.category,
       formState.paymentMethod.length > 0,
       formState.phone.match(/^[0-9]{11}$/))
     ) {
@@ -202,15 +202,15 @@ export default function AdminRegister() {
             <div>
               <input
                 type="location"
-                placeholder="First Branch Location"
-                name="branchLocation"
+                placeholder="Enter Restaurant Category"
+                name="category"
                 className="input_form"
                 onInput={updateFormState}
               />
-              {formTouches.branchLocation && !formState.branchLocation && (
+              {formTouches.category && !formState.category && (
                 <span className="input_form error d-block ">
                   {" "}
-                  Branch location is Required{" "}
+                  Restaurant category is Required{" "}
                 </span>
               )}
             </div>

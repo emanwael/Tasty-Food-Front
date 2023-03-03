@@ -22,7 +22,7 @@ export default function RestaurantCards({ categore }) {
           restaurant.length > 0 &&
             restaurant
               .filter((item) => {
-                return categore == "all" ? item : item.meals[0] == categore;
+                return categore == "all" ? item : item.category == categore;
               })
               .map((item) => {
                 return resturantCart(item);
@@ -190,11 +190,12 @@ export default function RestaurantCards({ categore }) {
 }
 
 const resturantCart = (item) => {
-  const { restaurant_name, _id } = item;
+  const { restaurant_name, _id, logo } = item;
   return (
     <div className="grid-item card" key={_id}>
       <div className="rows">
-        <img src="./images/restaurant1.jpg" alt="" />
+        {/* <img src="./images/restaurant1.jpg" alt="" /> */}
+        <img src={logo} alt="" />
       </div>
       <div className="rows justify-content-between p-3">
         <h5>{restaurant_name}</h5>
@@ -209,7 +210,7 @@ const resturantCart = (item) => {
 
       <div class="img_content rows">
         <div class="icons">
-          <h4>Restaurant Name</h4>
+          <h4>{restaurant_name}</h4>
           <Link to={`/restaurant/${_id}`} style={{ textDecoration: "none" }}>
             <p>Go To Restaurant Page</p>
           </Link>

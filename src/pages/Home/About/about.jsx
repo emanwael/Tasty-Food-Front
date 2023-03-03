@@ -21,9 +21,9 @@ export default function About({ chosseCategory }) {
             <h4>Burger</h4>
           </span>
 
-          <span className="s-card" onClick={() => chosseCategory("Pizaa")}>
+          <span className="s-card" onClick={() => chosseCategory("Pizza")}>
             <i class="fa-solid fa-pizza-slice"></i>
-            <h4>Pizaa</h4>
+            <h4>Pizza</h4>
           </span>
 
           <span className="s-card" onClick={() => chosseCategory("Sweets")}>
@@ -31,9 +31,9 @@ export default function About({ chosseCategory }) {
             <h4>Sweets</h4>
           </span>
 
-          <span className="s-card" onClick={() => chosseCategory("Breads")}>
+          <span className="s-card" onClick={() => chosseCategory("Bakery")}>
             <i class="fa-solid fa-bread-slice"></i>
-            <h4>Breads</h4>
+            <h4>Bakery</h4>
           </span>
         </div>
       </div>
