@@ -51,3 +51,13 @@
 .foot_desc-price {
   font-weight: 700;
 }
+.btn-detais{
+  background: none;
+  font-size: 0.8rem;
+  color: rgb(246, 114, 64);
+}
+
+.imgg {
+  object-fit: cover;
+  height: 300px;
+}
