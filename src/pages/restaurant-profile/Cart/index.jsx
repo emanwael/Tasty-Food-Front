@@ -9,6 +9,9 @@ import MyNavbar from "../../Home/Navbar/myNavbar";
 
 const Cart = () => {
   const navigate = useNavigate();
+
+  const { customerData } = useSelector((state) => state.customers);
+
   const { cartItems, totalPrice } = useSelector((state) => state.cartSlice);
 
   return (
@@ -24,7 +27,15 @@ const Cart = () => {
               <Menu list={cartItems} />
             </div>
             <h3 className="orders-total">Your Total ${totalPrice}</h3>
-            <button onClick={() => navigate("/payment")}>
+            <button
+              className=" btnnnn"
+              onClick={() => {
+                console.log(customerData);
+                customerData.customer_name
+                  ? navigate("/payment")
+                  : navigate("/customer-login");
+              }}
+            >
               Pay Now<i className="fas fa-long-arrow-alt-right"></i>
             </button>
           </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../payment/payment.css";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
@@ -10,6 +10,9 @@ import { useNavigate } from "react-router-dom";
 
 export default function Payment() {
   const navigator = useNavigate();
+  const { customerData } = useSelector((state) => state.customers);
+  const { customer_name, phone_number, address } = customerData;
+
   const { cartItems, totalPrice } = useSelector((state) => state.cartSlice);
   const { clearItemsCart } = cartActions;
   const dispatch = useDispatch();
@@ -26,6 +29,15 @@ export default function Payment() {
     phone: "",
     address: "",
   });
+
+  useEffect(() => {
+    setCredentials({
+      name: customer_name,
+      phone: phone_number,
+      address,
+    });
+  }, []);
+
   const handleChange = (e) => {
     const { value, name } = e.target;
     setCredentials({ ...credentials, [name]: value });
