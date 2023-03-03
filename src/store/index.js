@@ -4,6 +4,7 @@ import { CustomersReducer } from "./slices/customerSlice";
 import { AdminsReducer } from "./slices/adminSlice";
 import { mealReducer } from "./slices/mealSlice";
 import { cartReducer } from "./slices/cart";
+import { restaurantReducer } from "./slices/resturants";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     admins: AdminsReducer,
     mealSlice: mealReducer,
     cartSlice: cartReducer,
+    resturantsSlice: restaurantReducer,
   },
 });
 

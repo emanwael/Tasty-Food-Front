@@ -31,7 +31,7 @@ const HomeRestaurant = () => {
         <Banner handleScrollMenu={handleScrollMenu} />
         <Menu list={myMenu} ref={menuRef} />
         <ButtonCartCount />
-        {myMenu.length > 0 && console.log(myMenu)}
+        {/* {myMenu.length > 0 && console.log(myMenu)} */}
         {/* {restaurantInfo != {} && console.log(restaurantInfo)} */}
       </div>
     </div>

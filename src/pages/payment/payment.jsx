@@ -4,8 +4,12 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../store/slices/cart";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Payment() {
+  const navigator = useNavigate();
   const { cartItems, totalPrice } = useSelector((state) => state.cartSlice);
   const { clearItemsCart } = cartActions;
   const dispatch = useDispatch();
@@ -86,7 +90,6 @@ export default function Payment() {
       }
 
       setSuccess("Success! Payment is Complete");
-
       setTimeout(() => {
         setSuccess("Pay");
         setProcessing(false);
@@ -98,7 +101,8 @@ export default function Payment() {
         });
         cardElement.clear();
         dispatch(clearItemsCart());
-      }, 2000);
+        navigator("/home");
+      }, 5000);
     } catch (error) {
       console.log("error", error);
       setError(error.message);
@@ -221,12 +225,56 @@ export default function Payment() {
 
           <h3 className="orders-total">Your Total ${totalPrice}</h3>
 
-          <p className=" error">{Error}</p>
-          <button type="submit" className="submit-btn" disabled={isProcessing}>
+          <Popup
+            trigger={
+              <button
+                type="submit"
+                className="submit-btn"
+                disabled={isProcessing}
+              >
+                {Success}
+              </button>
+            }
+            modal
+            nested
+          >
+            {(close) => popup({ Success, isProcessing, Error, close })}
+          </Popup>
+          {/* <button type="submit" className="submit-btn" disabled={isProcessing}>
             {Success}
-          </button>
+          </button> */}
         </form>
       </div>
     </div>
   );
 }
+
+const popup = ({ Success, isProcessing, Error, close }) => {
+  console.log(Success);
+  return (
+    <div className=" text-center align-content-center p-5">
+      {Success == "Success! Payment is Complete" && (
+        <i class="fa-solid fa-circle-check iconss text-success"></i>
+      )}
+
+      {Error && (
+        <i class="fa-solid fa-circle-exclamation iconss text-danger"></i>
+      )}
+      {/* {isProcessing == true && <i class="fa-solid fa-arrows-rotate iconss"></i>} */}
+      <div className="m-3">
+        <p className=" error">{Error}</p>
+        {!Error && Success}
+      </div>
+      <div>
+        <button
+          className=" bgg text-white p-2 m-2"
+          onClick={() => {
+            close();
+          }}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  );
+};
