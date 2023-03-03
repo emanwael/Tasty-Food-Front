@@ -48,7 +48,7 @@ function ManageItemForm({ mode }) {
       restaurant: id,
     };
     dispatch(addMenuItem(newItem));
-    alert(`${formState.itemName} Added Successfully`);
+    alert(`${formState.itemName} Is Successfully Added`);
     navigate(`/adminMenue/${AdminData.restaurant}`);
   };
   const editItemOfForm = () => {
@@ -62,7 +62,7 @@ function ManageItemForm({ mode }) {
       is_available: formState.itemStatus,
     };
     dispatch(editMenuItem(newItem));
-    alert(`${formState.itemName} Updated Successfully`);
+    alert(`${formState.itemName} Is Successfully Updated`);
     navigate(`/adminMenue/${AdminData.restaurant}`);
   };
 

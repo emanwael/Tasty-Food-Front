@@ -27,7 +27,6 @@ export const getAllMeals = createAsyncThunk(
 export const deletMeal = createAsyncThunk(
   "myMenu/deleteMeal",
   async (mealId, thunkAPI) => {
-    console.log(mealId);
     const { rejectWithValue } = thunkAPI;
     try {
       const response = await axios.delete(`${mealUrl}/${mealId}`);
@@ -64,7 +63,9 @@ const mealSlice = createSlice({
     },
     [deletMeal.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.myMenu = state.myMenu.filter((e) => e.id !== action.payload._id);
+      state.myMenu = state.myMenu.filter((item) => {
+        if (item._id != action.payload._id) return item;
+      });
     },
     [deletMeal.rejected]: (state, action) => {
       state.isLoading = false;

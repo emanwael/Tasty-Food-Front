@@ -60,7 +60,8 @@ export default function AdminMenu() {
               key={e._id}
               deleteItem={() => {
                 dispatch(deletMeal(e._id));
-                alert(`${e.meal_name} Deleted Successfully`);
+                setFiltered(myMenu.filter((item) => item._id != e._id));
+                // alert(`${e.meal_name} Is Successfully Deleted`);
               }}
               edit={() => {
                 gotoEdite(e._id);
@@ -123,7 +124,7 @@ export default function AdminMenu() {
               {isLoading && (
                 <div>
                   {" "}
-                  <p className="alert alert-dark">loading.....</p>{" "}
+                  <p className="alert alert-dark">loading ...</p>{" "}
                 </div>
               )}
             </div>
