@@ -122,7 +122,7 @@ export default function MyNavbar() {
               {customerData._id && (
                 <NavDropdown.Item>
                   <Link
-                    to="/customer-login"
+                    to="/home"
                     onClick={() => {
                       dispatch(logoutCustomer());
                     }}

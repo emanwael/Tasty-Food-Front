@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, Tooltip, ArcElement, Legend } from "chart.js";
 import axios from "axios";
 import { Pie } from "react-chartjs-2";
+import { useSelector } from "react-redux";
 
 ChartJS.register(Tooltip, ArcElement, Legend);
 
 const PieChart = () => {
   const [chart, setChart] = useState({ x: [], y: [] });
-  var baseUrl =
-    "http://localhost:5100/analysis/restaurant/63d1867c42eb0fcac7149f49";
+  const { AdminData } = useSelector((store) => store.admins);
+  var baseUrl = `http://localhost:5100/analysis/restaurant/${AdminData.restaurant}`;
   const getData = async () => {
     try {
       const response = await axios.get(`${baseUrl}`);

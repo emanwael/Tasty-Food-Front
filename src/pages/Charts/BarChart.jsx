@@ -8,12 +8,13 @@ import {
 
 import { Bar } from "react-chartjs-2";
 import axios from "axios";
+import { useSelector } from "react-redux";
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
 const BarChart = () => {
   const [chart, setChart] = useState({ x: [], y: [], totalOrders: 0 });
-  var baseUrl =
-    "http://localhost:5100/analysis/restaurant/63d1867c42eb0fcac7149f49";
+  const { AdminData } = useSelector((store) => store.admins);
+  var baseUrl = `http://localhost:5100/analysis/restaurant/${AdminData.restaurant}`;
   const getData = async () => {
     try {
       const response = await axios.get(`${baseUrl}`);
