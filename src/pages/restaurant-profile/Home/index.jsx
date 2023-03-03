@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllMeals, mealSlice } from "../../../store/slices/mealSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import MyNavbar from "../../Home/Navbar/myNavbar";
+import Footer from "../../Home/Footer/footer";
 
 const HomeRestaurant = () => {
   const menuRef = useRef();

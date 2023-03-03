@@ -1,6 +1,7 @@
 .item {
   width: 150px;
-  padding: 0 0.8rem 0.8rem 0.8rem;
+  padding: 0 ; 
+  margin: 0 ;
   background-color: #fff;
   border-radius: 30px;
   text-align: center;
@@ -14,13 +15,14 @@
   object-fit: contain;
 }
 .item-foot_desc {
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .item-head_desc p {
   margin: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 5px;
 }
 
 .item-foot_desc button {
@@ -39,7 +41,7 @@
 
 .head_desc-name {
   font-weight: 600;
-      color: black;
+  color: black;
   font-size: 0.9rem;
   text-transform: capitalize;
   flex: 1;
@@ -47,6 +49,7 @@
 .head_desc-info {
   font-size: 0.8rem;
   color: #a0a0a0;
+   flex: 2;
 }
 .foot_desc-price {
   font-weight: 700;

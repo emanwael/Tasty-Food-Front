@@ -59,5 +59,6 @@ body {
 .containerr {
   max-width: 1140px;
   margin: 0 auto;
+  margin-bottom: 200px;
   width: 95%;
 }
