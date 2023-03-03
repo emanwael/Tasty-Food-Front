@@ -1,13 +1,14 @@
 import "./manageItemForm.css";
 import Sidbar from "../../Dashboard/Sidebar/sidbar";
 import { addMenuItem, editMenuItem } from "../../store/slices/menuItemSlice";
-
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 function ManageItemForm({ mode }) {
+  const navigate = useNavigate();
+
   // set form values based on mode
   const { id } = useParams();
   useEffect(() => {
@@ -18,6 +19,7 @@ function ManageItemForm({ mode }) {
 
   // api connection setup
   const dispatch = useDispatch();
+  const { AdminData } = useSelector((store) => store.admins);
   const getItem = () => {
     axios
       .get(`http://localhost:5100/meals/${id}`)
@@ -46,6 +48,8 @@ function ManageItemForm({ mode }) {
       restaurant: id,
     };
     dispatch(addMenuItem(newItem));
+    alert(`${formState.itemName} Added Successfully`);
+    navigate(`/adminMenue/${AdminData.restaurant}`);
   };
   const editItemOfForm = () => {
     let newItem = {
@@ -58,6 +62,8 @@ function ManageItemForm({ mode }) {
       is_available: formState.itemStatus,
     };
     dispatch(editMenuItem(newItem));
+    alert(`${formState.itemName} Updated Successfully`);
+    navigate(`/adminMenue/${AdminData.restaurant}`);
   };
 
   // form update & validation

@@ -58,8 +58,10 @@ export default function AdminMenu() {
               meal={e}
               search={search}
               key={e._id}
-              dispatch={dispatch}
-              deletMeal={deletMeal}
+              deleteItem={() => {
+                dispatch(deletMeal(e._id));
+                alert(`${e.meal_name} Deleted Successfully`);
+              }}
               edit={() => {
                 gotoEdite(e._id);
               }}
@@ -105,13 +107,13 @@ export default function AdminMenu() {
                   className="btn"
                   onClick={gotoAdd}
                   style={{
-                    backgroundColor: "#da6e10",
+                    backgroundColor: "#f67240",
                     width: "180px",
                     marginTop: "50px",
                     right: 0,
                   }}
                 >
-                  Add <i className="fa-solid fa-plus"></i>
+                  Add Item <i className="fa-solid fa-plus"></i>
                 </button>
               </div>
               <div className="container">

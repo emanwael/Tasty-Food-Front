@@ -45,7 +45,7 @@ export default function Sidbar() {
                 <NavLink
                   onClick={() => {
                     setActive(true);
-                    console.log(Active);
+                    // console.log(Active);
                     navigate(item.path);
                   }}
                   to={item.path}
