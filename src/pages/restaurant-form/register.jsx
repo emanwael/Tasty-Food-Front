@@ -247,7 +247,7 @@ export default function AdminRegister() {
               that email address is already in use
             </span>
           )}
-          <p>
+          <p className=" p">
             Already have an account?
             <a href="/admin-login" className="fw-bold">
               Login

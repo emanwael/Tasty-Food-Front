@@ -110,7 +110,7 @@ export default function AdminLogin() {
               Login Failed: Your email or password is incorrect
             </span>
           )}
-          <p className="p-3">
+          <p className="p-3 p">
             Have no account yet?
             <a href="/admin-register" className="fw-bold">
               Sign Up

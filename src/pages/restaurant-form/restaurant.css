@@ -147,7 +147,7 @@ label:hover {
     width: 220px;
     padding: 10px;
   }
-  p {
+  .p {
     font-size: 10px;
   }
   .restaurant_container h2 {
@@ -174,13 +174,13 @@ a:hover {
   color: rgb(246, 114, 64);
 }
 
-p {
+.p {
   font-size: 18px;
   color: #fff;
   font-weight: 600;
 }
 
-p a {
+.p a {
   font-size: 18px;
   color: #fff;
   font-weight: bold;
@@ -209,10 +209,10 @@ p a {
     width: 100px;
     font-size: 10px;
   }
-  p {
+  .p {
     font-size: 10px;
   }
-  p a {
+  .p a {
     font-size: 10px;
   }
 }
