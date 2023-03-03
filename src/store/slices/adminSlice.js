@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const baseURL = "http://localhost:5100/Admins";
+const baseURL = "http://localhost:5100/restaurant-admins";
 let initialState = {
   AdminData: {},
-  RestaurantData: {},
+  // RestaurantData: {},
   errors: [],
   isLoading: false,
 };
@@ -58,13 +58,15 @@ export const removeAdmin = createAsyncThunk(
     }
   }
 );
-////////////////////////TODO: Restaurant Functions
 
-//////////////////////////////////////////////////////////
 const AdminsSlice = createSlice({
   name: "Admins",
   initialState,
-  reducers: {},
+  reducers: {
+    logoutAdmin: (state, aaction) => {
+      state.AdminData = {};
+    },
+  },
   extraReducers: {
     [signAdminIn.pending]: (state, action) => {
       state.isLoading = true;

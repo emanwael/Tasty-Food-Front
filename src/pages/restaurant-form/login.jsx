@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
 import "./restaurant.css";
+import { signAdminIn } from "../../store/slices/adminSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminLogin() {
+  const navigate = useNavigate();
   // form update & validation
   let [formTouches, setFormTouches] = useState({
     email: false,
@@ -24,10 +27,7 @@ export default function AdminLogin() {
       setFormState({ ...formState, valid: true });
       setFormTouches({ ...formTouches, formSubmitted: true });
 
-      //////////TODO --> Admin Login Function
-      // signInCustomerOfForm();
-
-      //TODO --> navigate to restaurant dashboard
+      signInAdminOfForm();
     } else {
       setFormState({ ...formState, valid: false });
       setFormTouches({ ...formTouches, formSubmitted: true });
@@ -43,18 +43,22 @@ export default function AdminLogin() {
   };
   // api connection setup
   const dispatch = useDispatch();
-  const signInCustomerOfForm = () => {
-    let customer = {
-      email: formState.email,
-      password: formState.password,
-    };
-    // dispatch(signCustomerIn(customer));
+  const { AdminData } = useSelector((store) => store.admins);
+  const signInAdminOfForm = () => {
+    dispatch(signAdminIn(formState));
   };
+
+  useEffect(() => {
+    if (AdminData._id) {
+      //TODO: navigate to restaurant dashboard
+      // navigate(`/restaurant/${AdminData.restaurant}`);
+    }
+  }, [AdminData]);
 
   return (
     <div className="restaurant_signup">
       <div className="restaurant_form">
-        <div className="right_side" style={{ width: 700 }}>
+        <div className="right_side">
           <form className="restaurant_container">
             <h2>Welcome Back</h2>
             <input
@@ -65,15 +69,17 @@ export default function AdminLogin() {
               onInput={updateFormState}
             />
             {formTouches.email && !formState.email && (
-              <span className="error-message input d-block">
-                Email is required
+              <span className="input_form error d-block">
+                {" "}
+                Email is Required{" "}
               </span>
             )}
             {formTouches.email &&
               formState.email &&
               !formState.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) && (
-                <span className="error-message input_form d-block">
-                  please enter a valid email address
+                <span className="input_form error d-block">
+                  {" "}
+                  please enter a valid email address{" "}
                 </span>
               )}
             <input
@@ -84,8 +90,9 @@ export default function AdminLogin() {
               onInput={updateFormState}
             />
             {formTouches.password && !formState.password && (
-              <span className="error-message input d-block">
-                Password is Required
+              <span className="input_form error d-block">
+                {" "}
+                Password is Required{" "}
               </span>
             )}
           </form>
@@ -93,13 +100,19 @@ export default function AdminLogin() {
             Sign In
           </button>
           {formTouches.formSubmitted && !formState.valid && (
-            <span className="error-message input d-block">
-              please fill all the fields
+            <span className="input_form error d-block">
+              {" "}
+              please fill all the fields{" "}
+            </span>
+          )}
+          {formTouches.formSubmitted && formState.valid && !AdminData._id && (
+            <span className="error input-block">
+              Login Failed: Your email or password is incorrect
             </span>
           )}
           <p className="p-3">
             Have no account yet?
-            <a href="#" className="fw-bold">
+            <a href="/admin-register" className="fw-bold">
               Sign Up
             </a>
           </p>

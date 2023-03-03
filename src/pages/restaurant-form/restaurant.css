@@ -11,10 +11,10 @@
 }
 
 .restaurant_form {
-  max-width: 1200px;
+  max-width: 1300px;
   height: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   background-color: #c2baba4a;
@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  width: 1000px;
+  width: 1100px;
   justify-content: center;
   align-items: center;
 }
@@ -40,13 +40,13 @@
   color: #212121;
 }
 
-.restaurant_form h2 {
+h2 {
   padding-bottom: 10px;
   margin-bottom: 10px;
   position: relative;
 }
 
-.restaurant_form h2::after {
+h2::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -59,7 +59,6 @@
 }
 
 .input_form {
-  /* display: block; */
   outline: none;
   border: none;
   width: 400px;
@@ -71,10 +70,10 @@
   transition: 0.5s;
 }
 
-.restaurant_form input[type="checkbox"] {
+input[type="checkbox"] {
   margin: 5px;
 }
-.restaurant_form label {
+label {
   width: 110px;
   padding: 10px;
   margin-right: 50px;
@@ -82,23 +81,23 @@
   font-weight: bold;
   color: rgb(246, 114, 64);
 }
-.restaurant_form label:hover {
+label:hover {
   color: #fff;
 }
-.restaurant_form .input_form:hover {
+.input_form:hover {
   background-color: rgba(0, 0, 0, 0.477);
 }
 
-.restaurant_form .input_form:focus {
+.input_form:focus {
   background-color: #fff;
   border: 2px solid rgb(246, 114, 64);
 }
 
-.restaurant_form .button {
+.button {
   transition: 0.5s;
   border: none;
   outline: none;
-  padding: 12px 0;
+  padding: 12px;
   background-color: rgb(246, 114, 64);
   color: #fff;
   border-radius: 20px;
@@ -106,16 +105,10 @@
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
+  display: block;
 }
 .restaurant_form .button:hover {
   background-color: rgb(243, 93, 39);
-}
-.restaurant_form .err-message {
-  padding: 3px;
-  text-align: left;
-  padding-left: 10px;
-  background-color: #e59b4bb1;
-  font-size: 14px;
 }
 
 @media (max-width: 900px) {
@@ -130,7 +123,7 @@
     font-size: 18px;
     display: block;
   }
-  .restaurant_form label {
+  label {
     width: 90px;
     padding: 5px;
     margin-right: 20px;
@@ -143,8 +136,8 @@
     width: 400px;
   }
   .input_form,
-  .restaurant_form .button,
-  .restaurant_form a {
+  .button,
+  a {
     width: 150px;
     padding: 10px 0;
     margin: 7px;
@@ -154,13 +147,13 @@
     width: 220px;
     padding: 10px;
   }
-  .restaurant_form p {
+  p {
     font-size: 10px;
   }
   .restaurant_container h2 {
     font-size: 20px;
   }
-  .restaurant_form label {
+  label {
     width: 60px;
     padding: 5px;
     margin-right: 10px;
@@ -171,23 +164,23 @@
 .sign-button {
   background-color: rgb(246, 114, 64);
   color: #fff;
-  margin: 20px;
+  margin: 50px auto;
 }
 
-.restaurant_form a {
+a {
   text-decoration-line: none;
 }
-.restaurant_form a:hover {
+a:hover {
   color: rgb(246, 114, 64);
 }
 
-.restaurant_form p {
+p {
   font-size: 18px;
   color: #fff;
   font-weight: 600;
 }
 
-.restaurant_form p a {
+p a {
   font-size: 18px;
   color: #fff;
   font-weight: bold;
@@ -196,4 +189,30 @@
   filter: blur(1.1);
   border-radius: 10px;
   margin: 5px;
+}
+
+.error {
+  color: #212121;
+  padding: 3px;
+  text-align: left;
+  /* padding-left: 10px; */
+  background-color: #f6dfc8b1;
+  font-size: 14px;
+  width: auto;
+}
+
+@media (max-width: 490px) {
+  .right_side {
+    width: 200px;
+  }
+  .button {
+    width: 100px;
+    font-size: 10px;
+  }
+  p {
+    font-size: 10px;
+  }
+  p a {
+    font-size: 10px;
+  }
 }

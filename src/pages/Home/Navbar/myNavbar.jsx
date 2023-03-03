@@ -137,16 +137,18 @@ export default function MyNavbar() {
                 </NavDropdown.Item>
               )}
             </NavDropdown>
-            <NavLink
-              onClick={() => {
-                navigator("/admin-register");
-              }}
-              className={(navClass) =>
-                navClass.isActive ? "active__menu" : ""
-              }
-            >
-              for restaurants
-            </NavLink>
+            {!customerData._id && (
+              <NavLink
+                onClick={() => {
+                  navigator("/admin-register");
+                }}
+                className={(navClass) =>
+                  navClass.isActive ? "active__menu" : ""
+                }
+              >
+                for restaurants
+              </NavLink>
+            )}
             {/* <span className="user">
               <Link to="/login">
                 <i
