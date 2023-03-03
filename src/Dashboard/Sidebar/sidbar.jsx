@@ -2,27 +2,32 @@ import React, { useState } from "react";
 import { NavLink } from "react-bootstrap";
 import "./sidbar.css";
 import { useNavigate } from "react-router-dom";
-const navLinks = [
-  {
-    path: "/admin",
-    icon: "fa-solid fa-circle-user",
-    display: "Dashboard",
-  },
-  {
-    path: "/adminMenue/63d1867c42eb0fcac7149f49",
-    icon: "fa-solid fa-bars",
-    display: "Menu",
-  },
-  {
-    path: "/add",
-    icon: "fa-solid fa-square-plus",
-    display: "add",
-  },
-];
+import { AdminsActions } from "../../store/slices/adminSlice";
+import { useDispatch, useSelector } from "react-redux";
+let { logoutAdmin } = AdminsActions;
 
 export default function Sidbar() {
   const navigate = useNavigate();
   const [Active, setActive] = useState(false);
+  const dispatch = useDispatch();
+  const { AdminData } = useSelector((store) => store.admins);
+  const navLinks = [
+    {
+      path: `/admin`,
+      icon: "fa-solid fa-circle-user",
+      display: "Dashboard",
+    },
+    {
+      path: `/adminMenue/${AdminData.restaurant}`,
+      icon: "fa-solid fa-bars",
+      display: "Menu",
+    },
+    {
+      path: `/add/${AdminData.restaurant}`,
+      icon: "fa-solid fa-square-plus",
+      display: "add",
+    },
+  ];
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -59,7 +64,13 @@ export default function Sidbar() {
           </ul>
         </div>
 
-        <div className="sidebar__bottom">
+        <div
+          className="sidebar__bottom"
+          onClick={() => {
+            dispatch(logoutAdmin());
+            navigate("/admin-login");
+          }}
+        >
           <span>
             <i className="fa-solid fa-circle-user mx-3"></i> Logout
           </span>

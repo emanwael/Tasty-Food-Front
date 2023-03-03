@@ -2,6 +2,7 @@ import React from "react";
 import Sidbar from "./Sidebar/sidbar";
 import Dashboard from "./Admin-Dashboard/dashboard";
 import TopNav from "./Nav/topNav";
+import { useParams } from "react-router-dom";
 
 export default function Layout() {
   return (

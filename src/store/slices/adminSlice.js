@@ -9,7 +9,6 @@ let initialState = {
   isLoading: false,
 };
 
-////////////////////////TODO: Admin Functions
 export const signAdminIn = createAsyncThunk(
   "Admin/signAdminIn",
   async (Admin, thunkAPI) => {
@@ -63,7 +62,7 @@ const AdminsSlice = createSlice({
   name: "Admins",
   initialState,
   reducers: {
-    logoutAdmin: (state, aaction) => {
+    logoutAdmin: (state, action) => {
       state.AdminData = {};
     },
   },

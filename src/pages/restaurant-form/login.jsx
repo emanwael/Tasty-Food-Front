@@ -50,8 +50,7 @@ export default function AdminLogin() {
 
   useEffect(() => {
     if (AdminData._id) {
-      //TODO: navigate to restaurant dashboard
-      // navigate(`/restaurant/${AdminData.restaurant}`);
+      navigate(`/admin`);
     }
   }, [AdminData]);
 

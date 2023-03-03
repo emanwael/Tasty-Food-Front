@@ -75,8 +75,7 @@ export default function AdminRegister() {
   };
   useEffect(() => {
     if (AdminData._id) {
-      //TODO: navigate to restaurant dashboard
-      // navigate(`/restaurant/${AdminData.restaurant}`);
+      navigate(`/admin`);
     }
   }, [AdminData]);
   return (
