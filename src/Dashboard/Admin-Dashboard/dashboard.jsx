@@ -90,12 +90,12 @@ export default function Dashboard() {
       <div className="dashboard__wrapper">
         <div className="dashboard__cards">
           <SingleCard item={carObj} />
-          <SingleCard item={tripObj} />
-          <SingleCard item={clientObj} />
+          {/* <SingleCard item={tripObj} />
+          <SingleCard item={clientObj} /> */}
           <SingleCard item={distanceObj} />
         </div>
 
-        <div className="recommend__cars-wrapper">
+        {/* <div className="recommend__cars-wrapper">
           {orders1.map((item) => (
             <MenuCard item={item} key={item.id} />
           ))}
@@ -104,7 +104,7 @@ export default function Dashboard() {
           {orders2.map((item) => (
             <MenuCard item={item} key={item.id} />
           ))}
-        </div>
+        </div> */}
 
         <div className="statics">
           <div className="stats">

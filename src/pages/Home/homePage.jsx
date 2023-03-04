@@ -30,7 +30,7 @@ export default function HomePage() {
       <ChooseUs></ChooseUs>
       <AppInstall></AppInstall>
       <Review></Review>
-      <Footer></Footer>
+      <Footer id="contact" name="contact"></Footer>
     </div>
   );
 }

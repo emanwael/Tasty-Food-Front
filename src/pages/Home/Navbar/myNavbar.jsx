@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-
+import { HashLink } from "react-router-hash-link";
 import "./myNavbar.css";
 import "../home.css";
 import { Container, NavDropdown, NavLink } from "react-bootstrap";
@@ -24,12 +24,12 @@ const nav__links = [
   },
   {
     display: "Contact",
-    path: "/contact",
+    path: "#contact",
   },
 ];
 
 export default function MyNavbar() {
-  const menuRef = useRef(null);
+  const menuRef = useRef();
   const headerRef = useRef(null);
 
   const dispatch = useDispatch();
@@ -51,8 +51,10 @@ export default function MyNavbar() {
             <div className="menu d-flex align-items-center gap-5">
               {nav__links.map((item, index) => (
                 <NavLink
+                  HashLink
                   onClick={() => {
                     navigator(item.path);
+                    // menuRef.current.scrollIntoView({ behavior: "smooth" });
                   }}
                   to={item.path}
                   key={index}
@@ -62,6 +64,7 @@ export default function MyNavbar() {
                 >
                   {item.display}
                 </NavLink>
+                // <a href={item.path}> {item.display}</a>
               ))}
             </div>
           </div>
